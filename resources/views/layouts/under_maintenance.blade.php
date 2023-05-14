@@ -1,6 +1,6 @@
 @extends('layouts/blankLayout')
 
-@section('title', config('app.app_name')." - Under Maintenance")
+@section('title', config('app.name')." - Under Maintenance")
 
 @section('content')
 
