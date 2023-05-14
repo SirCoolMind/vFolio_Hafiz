@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(config('app.mode') == "maintenance"){
+            return view('layouts.under_maintenance');
+        }
         return view('vfolio.index');
     }
 }
