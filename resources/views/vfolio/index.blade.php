@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/virtual.css')}}">
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/topbar.virtual.css')}}">
+
 </head>
 
 <body class="theme-red">
@@ -81,9 +82,9 @@
 
     @include('vfolio.section.about')
 
-    @include('vfolio.section.service')
+    {{-- @include('vfolio.section.service') --}}
 
-    @include('vfolio.section.funfact')
+    {{-- @include('vfolio.section.funfact') --}}
 
     <!-- Portfolio page -->
     @include('vfolio.section.portfolio')
@@ -94,7 +95,7 @@
     <!-- End testimonial -->
 
     <!-- Client -->
-    @include('vfolio.section.client')
+    {{-- @include('vfolio.section.client') --}}
     <!-- End client -->
 
     <!-- Blog -->
@@ -102,7 +103,7 @@
     <!-- End blog -->
 
     <!-- Contact -->
-    @include('vfolio.section.contact')
+    {{-- @include('vfolio.section.contact') --}}
     <!-- End Contact -->
 
     <!-- Footer -->
@@ -133,6 +134,8 @@
     <script src="{{ asset('assets/js/google-maps.js') }}"></script>
 
     <script src="{{ asset('assets/js/topbar-virtual.js') }}"></script>
+
+    <script src="https://kit.fontawesome.com/e1267a6e7b.js" crossorigin="anonymous"></script>
 
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIA_zqjFMsJM_sxP9-6Pde5vVCTyJmUHM&callback=initMap">

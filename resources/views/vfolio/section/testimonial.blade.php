@@ -8,28 +8,29 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="img-place">
-                                    <img src="{{ asset('assets/img/testimonials/testimonials_1.jpg') }}" alt="">
+                                    <img src="{{ asset('assets/img/testimonials/unijaya.jpg') }}" alt="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="caption">
-                                    <div class="testi-content">There are many variations of passages of Lorem Ipsum
-                                        available, but the majority have suffered</div>
+                                    <div class="testi-content">
+                                        Your dedication, passion, and commitment to excellence have been a true inspiration to us all. You've been an exceptional team player, and your leadership has been invaluable. <a href="https://www.linkedin.com/feed/update/urn:li:activity:7069236571287269376/" target="_blank">See more</a>
+                                    </div>
                                     <div class="testi-info">
                                         <div class="thumb-profile">
-                                            <img src="{{ asset('assets/img/testimonials/testimonials_1.jpg') }}"
+                                            <img src="{{ asset('assets/img/logo/unijaya_logo.png') }}"
                                                 alt="">
                                         </div>
                                         <div class="tagline">
-                                            <h5 class="mb-0">Satria Nugraha</h5>
-                                            <span class="text-muted">CEO Nutshell</span>
+                                            <h5 class="mb-0">Upper Management</h5>
+                                            <span class="text-muted">Unijaya Resources Sdn Bhd</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
+                    {{-- <div class="item">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="img-place">
@@ -55,9 +56,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
-</div> 
+</div>

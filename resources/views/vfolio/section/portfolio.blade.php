@@ -1,21 +1,49 @@
 <div class="vg-page page-portfolio" id="portfolio">
     <div class="container">
-        <div class="text-center wow fadeInUp">
-            <div class="badge badge-subhead">Portfolio</div>
-        </div>
         <h1 class="text-center fw-normal wow fadeInUp">See my work</h1>
         <div class="filterable-button py-3 wow fadeInUp" data-toggle="selected">
             <button class="btn btn-theme-outline selected" data-filter="*">All</button>
             <button class="btn btn-theme-outline" data-filter=".apps">Apps</button>
-            <button class="btn btn-theme-outline" data-filter=".template">Template</button>
+            <button class="btn btn-theme-outline" data-filter=".mobile-apps">Mobile App</button>
+            {{-- <button class="btn btn-theme-outline" data-filter=".template">Template</button>
             <button class="btn btn-theme-outline" data-filter=".ios">IOS</button>
             <button class="btn btn-theme-outline" data-filter=".ui-ux">UI/UX</button>
             <button class="btn btn-theme-outline" data-filter=".graphic">Graphic</button>
-            <button class="btn btn-theme-outline" data-filter=".wireframes">Wireframes</button>
+            <button class="btn btn-theme-outline" data-filter=".wireframes">Wireframes</button> --}}
         </div>
 
         <div class="gridder my-3">
             <div class="grid-item apps wow zoomIn">
+                <div class="img-place" data-src="{{ asset('assets/img/coming_soon_1.png') }}" data-fancybox
+                    data-caption="<h5 class='fg-theme'><a href='https://tracker.hafiz.day' target='_blank'>Budget Tracker Website</a></h5> <p>Travel, Discovery</p>">
+                    <img src="{{ asset('assets/img/coming_soon_1.png') }}" alt="">
+                    <div class="img-caption">
+                        <h5 class="fg-theme"><a href='https://tracker.hafiz.day' onclick="window.open(this.href,'_blank');return false;">Budget Tracker Website</a></h5>
+                        <p>Finance, Tracker, Developing</p>
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="grid-item apps wow zoomIn">
+                <div class="img-place" data-src="{{ asset('assets/img/coming_soon_2.jpg') }}" data-fancybox
+                    data-caption="<h5 class='fg-theme'><a href='timetracker.hafiz.day' target='_blank'>Mobile Travel App</a></h5> <p>Travel, Discovery</p>">
+                    <img src="{{ asset('assets/img/coming_soon_2.jpg') }}" alt="">
+                    <div class="img-caption">
+                        <h5 class="fg-theme"><a href='timetracker.hafiz.day' target='_blank'>Mobile Travel App</a></h5>
+                        <p>Finance, Tracker</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item mobile-apps wow zoomIn">
+                <div class="img-place" data-src="{{ asset('assets/img/coming_soon_1.png') }}" data-fancybox
+                    data-caption="<h5 class='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
+                    <img src="{{ asset('assets/img/coming_soon_1.png') }}" alt="">
+                    <div class="img-caption">
+                        <h5 class="fg-theme">Budget Tracker Website</h5>
+                        <p>Finance, Tracker</p>
+                    </div>
+                </div>
+            </div> --}}
+            {{-- <div class="grid-item apps wow zoomIn">
                 <div class="img-place" data-src="{{ asset('assets/img/work/work-1.jpg') }}" data-fancybox
                     data-caption="<h5 class='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
                     <img src="{{ asset('assets/img/work/work-1.jpg') }}" alt="">
@@ -74,10 +102,10 @@
                         <p>Games, Streaming</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div> <!-- End gridder -->
-        <div class="text-center wow fadeInUp">
+        {{-- <div class="text-center wow fadeInUp">
             <a href="javascript:void(0)" class="btn btn-theme">Load More</a>
-        </div>
+        </div> --}}
     </div>
-</div> 
+</div>

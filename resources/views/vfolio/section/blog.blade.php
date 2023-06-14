@@ -3,8 +3,9 @@
         <div class="text-center">
             <div class="badge badge-subhead wow fadeInUp">Blog</div>
         </div>
-        <h1 class="text-center fw-normal wow fadeInUp">Latest Post</h1>
-        <div class="row post-grid">
+        <h1 class="text-center fw-normal wow fadeInUp">Latest Post (LinkedIn)</h1>
+        <div class='sk-ww-linkedin-profile-post' data-embed-id='154182'></div>
+        {{-- <div class="row post-grid">
             <div class="col-md-6 col-lg-4 wow fadeInUp">
                 <div class="card">
                     <div class="img-place">
@@ -44,6 +45,8 @@
             <div class="col-12 text-center py-3 wow fadeInUp">
                 <a href="blog-fullbar.html" class="btn btn-theme">See All Post</a>
             </div>
-        </div>
+        </div> --}}
     </div>
-</div> 
+</div>
+
+<script src='https://widgets.sociablekit.com/linkedin-profile-posts/widget.js' async defer></script>
