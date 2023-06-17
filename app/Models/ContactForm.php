@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MasterItem extends Model
+class ContactForm extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'master_item';
+    protected $table = 'contact_form';
 
     /**
      * The attributes that are mass assignable.
@@ -28,9 +28,10 @@ class MasterItem extends Model
 
     public $fillable = [
         'id',
-        'item_name',
-        'item_description',
-        'user_id'
+        'contact_email',
+        'contact_name',
+        'contact_subject',
+        'contact_message'
     ];
 
 }

@@ -137,6 +137,88 @@
 
     <script src="https://kit.fontawesome.com/e1267a6e7b.js" crossorigin="anonymous"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <script>
+        generalFormSubmit = function(elem) {
+            var form = $(elem).closest('form');
+            var refreshFunctionName = form.attr('data-refreshFunctionName');
+            var refreshFunctionNameIfSuccess = form.attr('data-refreshFunctionNameIfSuccess');
+            var refreshFunctionURL = form.attr('data-refreshFunctionURL');
+            var refreshFunctionDivId = form.attr('data-refreshFunctionDivId');
+            var reloadPage = form.attr('data-reloadPage');
+            event.preventDefault();
+            $.ajax({
+                url: $(form).attr('action'),
+                method: $(form).attr('method'),
+                data: new FormData($(form)[0]),
+                async: true,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+
+                    event.preventDefault();
+
+                    //If data-reloadPage exists, then reload the page
+                    if (reloadPage) {
+                        if (reloadPage == "true") {
+                            location.reload();
+                            return false;
+                        }
+                    }
+
+                    //If redirect page exists, then redirect to the page
+                    if(data.redirectRoute ?? false){
+                        window.location.href = data.redirectRoute;
+                        return false;
+                    }
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: 'Message has been sent to the owner!',
+                    })
+
+                    return false;
+
+                },
+                error: function(data) {
+                    var data = data.responseJSON;
+                    // console.log(data);
+                    if (data.errors === undefined) {
+                        if(data.message == "CSRF token mismatch.")
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Token Expired, Please refresh the page',
+                            })
+                        else
+
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: data.detail,
+                            })
+                    } else {
+                        $('#bahagianErrorBox').html("").show(); //clear error message
+                        let errorsHtml = "<ul>";
+                        $.each(data.errors, function(key, value) {
+                            errorsHtml += '<li>' + value + '</li>';
+                        });
+                        errorsHtml += '</ul>';
+                        $('#bahagianErrorBox').html(errorsHtml); //put error message into box
+                        $('html, body').animate({
+                            scrollTop: 0
+                        }, 'fast'); // scroll to the top
+                    }
+
+
+                    return false;
+                },
+            });
+        }
+    </script>
+
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIA_zqjFMsJM_sxP9-6Pde5vVCTyJmUHM&callback=initMap">
     </script>

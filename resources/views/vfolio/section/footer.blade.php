@@ -1,4 +1,4 @@
-<div class="vg-footer">
+<div class="vg-footer" id="contact">
     <h1 class="text-center">vFolio Hafiz Ruslan</h1>
     <div class="container">
         <div class="row">
@@ -7,9 +7,9 @@
                     <p>Follow me</p>
                     <hr class="divider">
                     <ul class="list-unstyled">
-                        <li><i class="fa-brands fa-square-github" style="color: #ffffff;"></i>&nbsp;<a href="https://www.linkedin.com/in/hafizruslan98/">LinkedIn</a></li>
-                        <li><i class="fa-brands fa-linkedin" style="color: #ffffff;"></i>&nbsp;<a href="https://github.com/SirCoolMind">Github</a></li>
-                        <li><i class="fa-brands fa-instagram" style="color: #ffffff;"></i>&nbsp;<a href="https://www.instagram.com/hafiz_coolman/">Instagram</a></li>
+                        <li><i class="fa-brands fa-square-github" style="color: #ffffff;"></i>&nbsp;<a href="https://www.linkedin.com/in/hafizruslan98/" target="_blank">LinkedIn</a></li>
+                        <li><i class="fa-brands fa-linkedin" style="color: #ffffff;"></i>&nbsp;<a href="https://github.com/SirCoolMind" target="_blank">Github</a></li>
+                        <li><i class="fa-brands fa-instagram" style="color: #ffffff;"></i>&nbsp;<a href="https://www.instagram.com/hafiz_coolman/" target="_blank">Instagram</a></li>
                     </ul>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                     <hr class="divider">
                     <ul class="list-unstyled">
                         <li>hafizcoolman@gmail.com</li>
-                        <li>+6019-2334157</li>
+                        <li><a href="https://wa.me/60192334157" target="_blank">+6019-233 4157 <i class="fa-brands fa-whatsapp" style="color: #ffffff;"></i> </a></li>
                     </ul>
                 </div>
             </div>
@@ -28,22 +28,23 @@
                     <p>Get In Touch</p>
                     <hr class="divider">
                     <div class="row">
-                        <form class="pt-0">
+                        <form class="pt-0" method="POST" action="{{route('sendEmail')}}">
+                            @csrf
                             <div class="form-row">
                                 <div class="col-12 wow fadeInUp">
-                                    <input class="form-control" type="text" name="Name" placeholder="Your Name">
+                                    <input class="form-control" type="text" name="contact_name" placeholder="Your Name">
                                 </div>
                                 <div class="col-6 mt-3 wow fadeInUp">
-                                    <input class="form-control" type="text" name="Email" placeholder="Email Address">
+                                    <input class="form-control" type="email" name="contact_email" placeholder="Email Address">
                                 </div>
                                 <div class="col-6 mt-3 wow fadeInUp">
-                                    <input class="form-control" type="text" name="Subject" placeholder="Subject">
+                                    <input class="form-control" type="text" name="contact_subject" placeholder="Subject">
                                 </div>
                                 <div class="col-12 mt-3 wow fadeInUp">
-                                    <textarea class="form-control" name="Message" rows="6"
+                                    <textarea class="form-control" name="contact_message" rows="6"
                                         placeholder="Enter message here.."></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-theme mt-3 wow fadeInUp ml-1">Send Message</button>
+                                <button type="button" onclick="generalFormSubmit(this)" class="btn btn-theme mt-3 wow fadeInUp ml-1">Send Message</button>
                             </div>
                         </form>
                     </div>
