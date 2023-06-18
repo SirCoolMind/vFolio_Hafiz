@@ -7,7 +7,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Virtual Folio - Portfolio HTML5 Template</title>
+    <title>Virtual Folio - Muhammad Hafiz Ruslan</title>
 
     <link rel="shortcut icon" href="{{ asset('assets/favicon.ico') }}" type="image/x-icon">
 

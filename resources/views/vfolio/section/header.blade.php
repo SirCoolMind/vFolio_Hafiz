@@ -2,7 +2,7 @@
     <!-- Navbar -->
     <div class="navbar navbar-expand-lg navbar-dark sticky" data-offset="500">
         <div class="container">
-            <a href="" class="navbar-brand">V-Folio</a>
+            <a href="" class="navbar-brand">vFolio</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar" aria-expanded="true">
                 <span class="ti-menu"></span>
             </button>
