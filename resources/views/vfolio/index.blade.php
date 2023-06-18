@@ -19,8 +19,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/owl-carousel/owl.carousel.css')}}">
 
-    <link rel="stylesheet" type="text/css"
-        href="{{asset('assets/vendor/perfect-scrollbar/css/perfect-scrollbar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}">
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/nice-select/css/nice-select.css')}}">
 
@@ -117,7 +116,7 @@
 
     <script src="{{ asset('assets/vendor/owl-carousel/owl.carousel.min.js') }}"></script>
 
-    <script src="{{ asset('assets/vendor/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 
     <script src="{{ asset('assets/vendor/isotope/isotope.pkgd.min.js') }}"></script>
 
@@ -130,8 +129,6 @@
     <script src="{{ asset('assets/vendor/animateNumber/jquery.animateNumber.min.js') }}"></script>
 
     <script src="{{ asset('assets/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
-
-    <script src="{{ asset('assets/js/google-maps.js') }}"></script>
 
     <script src="{{ asset('assets/js/topbar-virtual.js') }}"></script>
 
@@ -217,10 +214,6 @@
                 },
             });
         }
-    </script>
-
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIA_zqjFMsJM_sxP9-6Pde5vVCTyJmUHM&callback=initMap">
     </script>
 
 </body>
