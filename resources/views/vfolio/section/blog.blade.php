@@ -4,7 +4,9 @@
             <div class="badge badge-subhead wow fadeInUp">Blog</div>
         </div>
         <h1 class="text-center fw-normal wow fadeInUp">Latest Post (LinkedIn)</h1>
-        <div class='sk-ww-linkedin-profile-post' data-embed-id='154182'></div>
+        <div style="max-height: 600px !important; overflow-y: auto;">
+            <div class='sk-ww-linkedin-profile-post' data-embed-id='154182'></div>
+        </div>
         {{-- <div class="row post-grid">
             <div class="col-md-6 col-lg-4 wow fadeInUp">
                 <div class="card">
