@@ -9,7 +9,6 @@
                     <ul class="list-unstyled">
                         <li><i class="fa-brands fa-square-github" style="color: #ffffff;"></i>&nbsp;<a href="https://www.linkedin.com/in/hafizruslan98/" target="_blank">LinkedIn</a></li>
                         <li><i class="fa-brands fa-linkedin" style="color: #ffffff;"></i>&nbsp;<a href="https://github.com/SirCoolMind" target="_blank">Github</a></li>
-                        <li><i class="fa-brands fa-instagram" style="color: #ffffff;"></i>&nbsp;<a href="https://www.instagram.com/hafiz_coolman/" target="_blank">Instagram</a></li>
                     </ul>
                 </div>
             </div>
@@ -19,7 +18,6 @@
                     <hr class="divider">
                     <ul class="list-unstyled">
                         <li>hafizcoolman@gmail.com</li>
-                        <li><a href="https://wa.me/60192334157" target="_blank">+6019-233 4157 <i class="fa-brands fa-whatsapp" style="color: #ffffff;"></i> </a></li>
                     </ul>
                 </div>
             </div>
