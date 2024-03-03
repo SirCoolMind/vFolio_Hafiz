@@ -44,6 +44,9 @@
                                     <textarea class="form-control" name="contact_message" rows="6"
                                         placeholder="Enter message here.."></textarea>
                                 </div>
+                                <div class="col-12 wow fadeInUp">
+                                    <input class="form-control" type="text" name="combat_spam" placeholder="17 + 2">
+                                </div>
                                 <button type="button" onclick="generalFormSubmit(this)" class="btn btn-theme mt-3 wow fadeInUp ml-1">Send Message</button>
                             </div>
                         </form>

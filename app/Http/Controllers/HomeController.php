@@ -54,6 +54,10 @@ class HomeController extends Controller
                 throw new \Exception('Email entered is not valid');
             }
 
+            if($request->combat_spam == 19){
+                return response()->json(['title' => 'Berjaya', 'status' => 'success', 'message' => "Berjaya", 'detail' => "berjaya"]);
+            }
+
             $data = [
                 'contact_email' => $request->contact_email,
                 'contact_name' => $request->contact_name,
