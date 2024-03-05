@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('contact_form', function (Blueprint $table) {
-            $table->string('contact_combat_spam',255);
+            $table->string('contact_combat_spam',255)->nullable();
             $table->boolean('contact_is_bot')->default(1);
         });
     }
