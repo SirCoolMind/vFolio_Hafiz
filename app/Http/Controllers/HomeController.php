@@ -54,18 +54,20 @@ class HomeController extends Controller
                 throw new \Exception('Email entered is not valid');
             }
 
-            if($request->combat_spam != '19'){
-                return response()->json(['title' => 'Berjaya', 'status' => 'success', 'message' => "Berjaya", 'detail' => "berjaya"]);
-            }
-
             $data = [
                 'contact_email' => $request->contact_email,
                 'contact_name' => $request->contact_name,
                 'contact_subject' => $request->contact_subject,
                 'contact_message' => $request->contact_message,
+                'contact_combat_spam' => $request->combat_spam,
+                'contact_is_bot' => $request->combat_spam != '19' ? true : false, 
             ];
 
             ContactForm::create($data);
+            
+            if($request->combat_spam != '19'){
+                return response()->json(['title' => 'Berjaya', 'status' => 'success', 'message' => "Berjaya", 'detail' => "berjaya"]);
+            }
 
             \Mail::to($this->ownerEmail)->send(new ContactFormEmail($data));
 
