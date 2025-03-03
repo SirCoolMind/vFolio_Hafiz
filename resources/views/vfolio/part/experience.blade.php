@@ -46,12 +46,24 @@
             <h2 class="fw-normal">Work Experience</h2>
             <ul class="timeline mt-4 pr-md-5">
                 <li>
+                    <div class="title">Jul 2023 - Present</div>
+                    <div class="details">
+                        <h5>PHP Programmer</h5>
+                        <small class="fg-theme">IMT Tech Sdn Bhd</small>
+                        <p>
+                            • Implemented <b>LaTeX</b> as an alternative PDF generator, optimized to produce <b>1000+ invoice pages</b> in seconds, meeting big client demands.
+                            • Built a <b>booking system</b> with adaptive hours, managing <b>300+</b> rooms across <b>80+</b> levels.
+                            • Collaborated with a highly skilled team, matching their pace and producing outputs on par with senior IT members with 10+ years of experience.
+                        </p>
+                    </div>
+                </li>
+                <li>
                     <div class="title">Sep 2021 - May 2023</div>
                     <div class="details">
                         <h5>PHP Developer</h5>
                         <small class="fg-theme">Unijaya Resources Sdn Bhd</small>
                         <p>
-                            • Collaborated with cross-functional teams to develop, maintain, and assist in <b>3</b> live projects, <b>4</b> in development and <b>3</b> in-house services<br>
+                            • Collaborated with cross-functional teams to develop, maintain, and assist in <b>7</b> live projects, <b>4</b> in development and <b>3</b> in-house services<br>
                             • Skills in improving API, UI/UX design, backend performance, creating easy-to-follow code standardization, and providing well-thought-out solutions
                         </p>
                     </div>
