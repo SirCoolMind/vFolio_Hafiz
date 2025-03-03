@@ -54,7 +54,7 @@
         </div>
         <div class="row justify-content-center mt-3">
             <div class="col-12">
-                <p class="text-center mb-0 mt-4">Copyright &copy; 2023. Hafiz Ruslan. All right reserved.
+                <p class="text-center mb-0 mt-4">Copyright &copy; 2025. Hafiz Ruslan. All right reserved.
             </div>
         </div>
     </div>
