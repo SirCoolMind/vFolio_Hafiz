@@ -10,6 +10,9 @@
             <div class="px-lg-3">
                 <h4 class="wow fadeInUp">Front-End</h4>
                 <div class="progress-wrapper wow fadeInUp customHeight-1000">
+                    <span class="caption"> <img src="{{ asset('assets/img/logo/vuejs.png') }}" height="auto;" width="50px;">&nbsp;&nbsp;&nbsp;Vue JS</span>
+                </div>
+                <div class="progress-wrapper wow fadeInUp customHeight-1000">
                     <span class="caption"> <img src="{{ asset('assets/img/logo/laravel.svg') }}" height="auto;" width="50px;">&nbsp;&nbsp;&nbsp;Laravel Blade</span>
                 </div>
                 <div class="progress-wrapper wow fadeInUp customHeight-1000">
@@ -47,6 +50,12 @@
         <div class="col-md-3">
             <div class="px-lg-3">
                 <h4 class="wow fadeInUp">Tools</h4>
+                <div class="progress-wrapper wow fadeInUp customHeight-1000">
+                    <span class="caption"> <img src="{{ asset('assets/img/logo/virtual.png') }}" height="auto;" width="50px;">&nbsp;&nbsp;&nbsp;VirtualBox</span>
+                </div>
+                <div class="progress-wrapper wow fadeInUp customHeight-1000">
+                    <span class="caption"> <img src="{{ asset('assets/img/logo/homestead.png') }}" height="auto;" width="50px;">&nbsp;&nbsp;&nbsp;Homestead</span>
+                </div>
                 <div class="progress-wrapper wow fadeInUp customHeight-1000">
                     <span class="caption"> <img src="{{ asset('assets/img/logo/laragon.png') }}" height="auto;" width="50px;">&nbsp;&nbsp;&nbsp;Laragon</span>
                 </div>
