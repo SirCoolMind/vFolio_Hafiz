@@ -51,7 +51,7 @@
             <div class="px-lg-3">
                 <h4 class="wow fadeInUp">Tools</h4>
                 <div class="progress-wrapper wow fadeInUp customHeight-1000">
-                    <span class="caption"> <img src="{{ asset('assets/img/logo/virtual.png') }}" height="auto;" width="50px;">&nbsp;&nbsp;&nbsp;VirtualBox</span>
+                    <span class="caption"> <img src="{{ asset('assets/img/logo/virtualbox.png') }}" height="auto;" width="50px;">&nbsp;&nbsp;&nbsp;VirtualBox</span>
                 </div>
                 <div class="progress-wrapper wow fadeInUp customHeight-1000">
                     <span class="caption"> <img src="{{ asset('assets/img/logo/homestead.png') }}" height="auto;" width="50px;">&nbsp;&nbsp;&nbsp;Homestead</span>
