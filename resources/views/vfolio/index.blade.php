@@ -101,14 +101,18 @@
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
 
     <script>
-        generalFormSubmit = function(elem) {
+        window.generalFormSubmit = function(elem) {
             var form = $(elem).closest('form');
             var refreshFunctionName = form.attr('data-refreshFunctionName');
             var refreshFunctionNameIfSuccess = form.attr('data-refreshFunctionNameIfSuccess');
             var refreshFunctionURL = form.attr('data-refreshFunctionURL');
             var refreshFunctionDivId = form.attr('data-refreshFunctionDivId');
             var reloadPage = form.attr('data-reloadPage');
-            event.preventDefault();
+            
+            if (typeof event !== 'undefined' && event.preventDefault) {
+                event.preventDefault();
+            }
+
             $.ajax({
                 url: $(form).attr('action'),
                 method: $(form).attr('method'),
@@ -117,8 +121,6 @@
                 contentType: false,
                 processData: false,
                 success: function(data) {
-
-                    event.preventDefault();
 
                     //If data-reloadPage exists, then reload the page
                     if (reloadPage) {
