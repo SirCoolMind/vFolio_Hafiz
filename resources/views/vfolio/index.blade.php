@@ -29,6 +29,8 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/topbar.virtual.css')}}">
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome/css/all.min.css') }}">
+    <link href="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
 </head>
 
 <body class="theme-red">
@@ -95,10 +97,7 @@
 
     <script src="{{ asset('assets/js/topbar-virtual.js') }}"></script>
 
-    <script src="https://kit.fontawesome.com/e1267a6e7b.js" crossorigin="anonymous"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
     <script>
         window.generalFormSubmit = function(elem) {
