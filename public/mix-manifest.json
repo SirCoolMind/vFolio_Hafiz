@@ -52,5 +52,15 @@
     "/fonts/font-awesome/webfonts/fa-solid-900.ttf": "/fonts/font-awesome/webfonts/fa-solid-900.ttf?id=cd687455c6d6c058e2e9f84f409e2965",
     "/fonts/font-awesome/webfonts/fa-solid-900.woff2": "/fonts/font-awesome/webfonts/fa-solid-900.woff2?id=eea38615e7b5dbbaf88c263f2230cc32",
     "/fonts/font-awesome/webfonts/fa-v4compatibility.ttf": "/fonts/font-awesome/webfonts/fa-v4compatibility.ttf?id=6ebbf5afc34f54463abc2b81ca637364",
-    "/fonts/font-awesome/webfonts/fa-v4compatibility.woff2": "/fonts/font-awesome/webfonts/fa-v4compatibility.woff2?id=67b8a78b7e80e805cfa4ee0421895ba4"
+    "/fonts/font-awesome/webfonts/fa-v4compatibility.woff2": "/fonts/font-awesome/webfonts/fa-v4compatibility.woff2?id=67b8a78b7e80e805cfa4ee0421895ba4",
+    "/assets/vendor/libs/sweetalert2/sweetalert2.all.js": "/assets/vendor/libs/sweetalert2/sweetalert2.all.js?id=ba43b707a3d7a976fa30a879f80e3cd8",
+    "/assets/vendor/libs/sweetalert2/sweetalert2.all.min.js": "/assets/vendor/libs/sweetalert2/sweetalert2.all.min.js?id=df4ddb0df34dfd07ba71a9689d8e86f4",
+    "/assets/vendor/libs/sweetalert2/sweetalert2.css": "/assets/vendor/libs/sweetalert2/sweetalert2.css?id=8bf7a616bec3f35afeae070af08ce36e",
+    "/assets/vendor/libs/sweetalert2/sweetalert2.esm.all.js": "/assets/vendor/libs/sweetalert2/sweetalert2.esm.all.js?id=c52ee03ef39c0fd732e77f6ec3105e9e",
+    "/assets/vendor/libs/sweetalert2/sweetalert2.esm.all.min.js": "/assets/vendor/libs/sweetalert2/sweetalert2.esm.all.min.js?id=654f8439f5e1834f676193a50058ba69",
+    "/assets/vendor/libs/sweetalert2/sweetalert2.esm.js": "/assets/vendor/libs/sweetalert2/sweetalert2.esm.js?id=5bea9c56181f4941a5fe6e3833cb7352",
+    "/assets/vendor/libs/sweetalert2/sweetalert2.esm.min.js": "/assets/vendor/libs/sweetalert2/sweetalert2.esm.min.js?id=9c4595e05f6022a6930fa8b76e3cd0c6",
+    "/assets/vendor/libs/sweetalert2/sweetalert2.js": "/assets/vendor/libs/sweetalert2/sweetalert2.js?id=dd252579182db31e9e4332a69c6aeca5",
+    "/assets/vendor/libs/sweetalert2/sweetalert2.min.css": "/assets/vendor/libs/sweetalert2/sweetalert2.min.css?id=03cdc65908d231c29a0ae5bb82b967fb",
+    "/assets/vendor/libs/sweetalert2/sweetalert2.min.js": "/assets/vendor/libs/sweetalert2/sweetalert2.min.js?id=1d73c98a74678e881fdfe134a24308d0"
 }

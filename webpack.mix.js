@@ -160,6 +160,12 @@ mix.copyDirectory(
     "public/fonts/font-awesome/webfonts"
 );
 
+//-- Sweetalert2 from npm --//
+mix.copyDirectory(
+    "node_modules/sweetalert2/dist",
+    "public/assets/vendor/libs/sweetalert2"
+);
+
 mix.version();
 
 /*
