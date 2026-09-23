@@ -82,7 +82,7 @@ export const ContactSection: React.FC = () => {
   return (
     <section
       id="contact"
-      className="relative py-24 md:py-32 bg-black text-white px-6 md:px-12 border-t border-white/10 overflow-hidden"
+      className="relative py-12 md:py-16 bg-black text-white px-6 md:px-12 border-t border-white/10 overflow-hidden"
     >
       {/* Marquee Header Banner */}
       <div className="mb-16 -mx-6 md:-mx-12 overflow-hidden py-4 border-y border-white/10 bg-white/[0.02]">

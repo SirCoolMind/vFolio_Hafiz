@@ -49,7 +49,7 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="relative py-24 md:py-32 bg-black text-white px-6 md:px-12 overflow-hidden">
+    <section id="contact" className="relative py-12 md:py-16 bg-black text-white px-6 md:px-12 overflow-hidden">
       {/* Infinite Scrolling Marquee ("Say hello!") */}
       <div className="w-full overflow-hidden whitespace-nowrap mb-16 select-none opacity-20 hover:opacity-40 transition-opacity">
         <div className="inline-block animate-marquee">

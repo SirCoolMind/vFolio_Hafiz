@@ -37,7 +37,7 @@ export interface EducationItem {
 
 export interface SkillCategory {
   title: string;
-  skills: { name: string; level: number; icon: string; tag?: string }[];
+  skills: { name: string; icon: string; tag?: string }[];
 }
 
 export interface ServicePack {
@@ -165,51 +165,36 @@ export const PORTFOLIO_DATA = {
     {
       title: "Front-End",
       skills: [
-        { name: "Vue.js", level: 92, icon: "vuejs", tag: "Advanced" },
-        { name: "React.js / Next.js", level: 88, icon: "react", tag: "Modern Stack" },
-        { name: "Laravel Blade", level: 95, icon: "laravel", tag: "Expert" },
-        { name: "Tailwind CSS", level: 94, icon: "tailwind", tag: "Modern UI" },
-        { name: "TypeScript / JS (ES6+)", level: 90, icon: "typescript", tag: "Core" },
-        { name: "SASS / SCSS", level: 85, icon: "sass", tag: "Styling" },
+        { name: "Vue.js (Vue 2 & Vue 3 / Composition & Options API)", icon: "vuejs", tag: "Primary Framework" },
+        { name: "Laravel Blade + jQuery", icon: "laravel", tag: "Single Page App alike" },
+        { name: "React.js & Next.js (TypeScript & JavaScript)", icon: "react", tag: "Modern UI" },
       ],
     },
     {
-      title: "Back-End & Engines",
+      title: "Backend & DB",
       skills: [
-        { name: "PHP (7.4 — 8.3)", level: 96, icon: "php", tag: "Core Mastery" },
-        { name: "Laravel Framework", level: 95, icon: "laravel", tag: "Architecture" },
-        { name: "Node.js & Express", level: 86, icon: "nodejs", tag: "Async APIs" },
-        { name: "LaTeX PDF Engine", level: 92, icon: "latex", tag: "High Throughput" },
-        { name: "RESTful & GraphQL APIs", level: 92, icon: "api", tag: "Integration" },
-      ],
-    },
-    {
-      title: "Database & Storage",
-      skills: [
-        { name: "MySQL (Optimization & Indexing)", level: 94, icon: "mysql", tag: "Relational" },
-        { name: "MongoDB", level: 84, icon: "mongodb", tag: "NoSQL" },
-        { name: "Redis", level: 85, icon: "redis", tag: "Caching" },
-        { name: "SQLite", level: 90, icon: "sqlite", tag: "Lightweight" },
+        { name: "Laravel Framework (v5 - v13) & Node.js & Express.js", icon: "laravel", tag: "Core Mastery" },
+        { name: "LaTeX PDF Pipeline (Engine, Templates & Laravel Packages)", icon: "latex", tag: "High Throughput" },
+        { name: "MySQL, PostgreSQL, ClickHouse & SQLite", icon: "mysql", tag: "Relational" },
+        { name: "MongoDB & Google Firestore", icon: "mongodb", tag: "NoSQL" },
+        { name: "Redis & Valkey", icon: "redis", tag: "In-Memory & Cache" },
       ],
     },
     {
       title: "DevOps & Tooling",
       skills: [
-        { name: "Git / GitHub Desktop", level: 95, icon: "git", tag: "Version Control" },
-        { name: "Docker & Containers", level: 82, icon: "docker", tag: "Containerization" },
-        { name: "Homestead / Vagrant", level: 88, icon: "homestead", tag: "Dev Environment" },
-        { name: "Laragon / WAMP", level: 92, icon: "laragon", tag: "Local Server" },
-        { name: "Linux (Ubuntu/Debian)", level: 85, icon: "linux", tag: "Server Admin" },
-        { name: "VirtualBox", level: 85, icon: "virtualbox", tag: "Virtualization" },
+        { name: "Docker and VirtualBox", icon: "docker", tag: "Containerization" },
+        { name: "Laragon & Homestead & Vagrant", icon: "homestead", tag: "Dev Environment" },
+        { name: "Linux Systems (Ubuntu, Debian & CentOS)", icon: "linux", tag: "Server Admin" },
+        { name: "Git & GitHub Desktop", icon: "git", tag: "Version Control" },
       ],
     },
     {
-      title: "Core Competencies",
+      title: "AI & Autonomous Tooling",
       skills: [
-        { name: "Problem Solving & Algorithmic Design", level: 99, icon: "brain", tag: "99% Metric" },
-        { name: "Collaboration & Team Leadership", level: 95, icon: "users", tag: "95% Metric" },
-        { name: "Attention to Detail & Code Cleanliness", level: 90, icon: "sparkles", tag: "90% Metric" },
-        { name: "Creative Architecture & Fast Prototyping", level: 88, icon: "lightbulb", tag: "88% Metric" },
+        { name: "Claude Code & Antigravity Assistant", icon: "brain", tag: "AI Pair Programming" },
+        { name: "Open Source LLMs (DeepSeek 4.1 Flash / Qwen 3.8 Flash)", icon: "sparkles", tag: "Reasoning & Coding" },
+        { name: "Local LLM Engines (LM Studio, Pinokio)", icon: "cpu", tag: "Data Privacy" },
       ],
     },
   ] as SkillCategory[],

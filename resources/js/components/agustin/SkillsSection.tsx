@@ -4,7 +4,7 @@ import { PORTFOLIO_DATA } from "@/data/portfolio-data";
 export const SkillsSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
-  const categories = ["All", "Front-End", "Back-End & Engines", "Database & Storage", "DevOps & Tooling", "Core Competencies"];
+  const categories = ["All", "Front-End", "Backend & DB", "DevOps & Tooling", "AI & Autonomous Tooling"];
 
   const filteredCategories =
     activeCategory === "All"
@@ -57,7 +57,7 @@ export const SkillsSection: React.FC = () => {
         </div>
 
         {/* Grid of Skill Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {filteredCategories.map((cat) => (
             <div
               key={cat.title}
@@ -73,82 +73,26 @@ export const SkillsSection: React.FC = () => {
                   </span>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {cat.skills.map((skill) => (
-                    <div key={skill.name} className="group/skill">
-                      <div className="flex items-center justify-between text-sm mb-1.5">
-                        <span className="font-medium text-white/90 group-hover/skill:text-white transition-colors">
-                          {skill.name}
+                    <div
+                      key={skill.name}
+                      className="flex items-center justify-between py-2 px-3 rounded-lg bg-white/[0.02] hover:bg-white/[0.05] border border-white/5 hover:border-white/20 transition-all duration-200 group/skill"
+                    >
+                      <span className="font-medium text-sm text-white/90 group-hover/skill:text-white transition-colors">
+                        {skill.name}
+                      </span>
+                      {skill.tag && (
+                        <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-white/10 text-white/60">
+                          {skill.tag}
                         </span>
-                        <div className="flex items-center gap-2">
-                          {skill.tag && (
-                            <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-white/10 text-white/60">
-                              {skill.tag}
-                            </span>
-                          )}
-                          <span className="text-xs font-mono text-white/40">
-                            {skill.level}%
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Level Progress Bar */}
-                      <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-gradient-to-r from-white/60 to-white group-hover/skill:from-emerald-400 group-hover/skill:to-teal-300 transition-all duration-500"
-                          style={{ width: `${skill.level}%` }}
-                        />
-                      </div>
+                      )}
                     </div>
                   ))}
                 </div>
               </div>
-
-              <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-white/40">
-                <span>Verified Production Experience</span>
-                <span className="text-emerald-400">● Active</span>
-              </div>
             </div>
           ))}
-        </div>
-
-        {/* Global Skill Tags Cloud */}
-        <div className="p-8 rounded-2xl border border-white/10 bg-white/[0.01]">
-          <span className="text-xs uppercase font-mono tracking-widest text-white/40 block mb-4">
-            Quick Stack Inventory
-          </span>
-          <div className="flex flex-wrap gap-2">
-            {[
-              "PHP 8.3",
-              "Laravel 11",
-              "Vue 3",
-              "React",
-              "Next.js",
-              "LaTeX Engine",
-              "MySQL Optimization",
-              "Redis",
-              "Node.js",
-              "Tailwind CSS",
-              "TypeScript",
-              "Docker",
-              "Homestead",
-              "Laragon",
-              "Linux Ubuntu",
-              "REST APIs",
-              "Spatie RBAC",
-              "ApexCharts",
-              "WebSockets",
-              "MongoDB",
-              "Git Flow",
-            ].map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 text-white/75 hover:bg-white/15 hover:text-white border border-white/10 transition-colors cursor-default"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </section>

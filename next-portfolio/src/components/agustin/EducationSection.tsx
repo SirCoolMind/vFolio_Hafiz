@@ -6,7 +6,7 @@ import { PORTFOLIO_DATA } from "@/data/portfolio-data";
 
 export const EducationSection: React.FC = () => {
   return (
-    <section id="education" className="relative py-24 md:py-32 bg-black text-white px-6 md:px-12">
+    <section id="education" className="relative py-12 md:py-16 bg-black text-white px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">

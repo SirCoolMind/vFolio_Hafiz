@@ -6,7 +6,7 @@ export const TestimonialSection: React.FC = () => {
   if (!t) return null;
 
   return (
-    <section className="py-20 md:py-28 bg-black text-white px-6 md:px-12 border-t border-white/10 relative overflow-hidden">
+    <section className="py-12 md:py-16 bg-black text-white px-6 md:px-12 border-t border-white/10 relative overflow-hidden">
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <span className="text-xs uppercase font-mono tracking-widest text-white/40 block mb-6">
           Client Endorsement • Executive Board
