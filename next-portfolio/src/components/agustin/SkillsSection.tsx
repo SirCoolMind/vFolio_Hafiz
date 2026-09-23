@@ -16,7 +16,7 @@ export const SkillsSection: React.FC = () => {
       : PORTFOLIO_DATA.skillCategories.filter((c) => c.title === activeCategory);
 
   return (
-    <section id="skills" className="relative py-24 md:py-32 bg-black text-white px-6 md:px-12 border-t border-white/10">
+    <section id="skills" className="relative pt-12 pb-24 md:pt-16 md:pb-32 bg-black text-white px-6 md:px-12 border-t border-white/10">
       <div className="max-w-7xl mx-auto">
         {/* Section Header with Signature Numbered Format */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">

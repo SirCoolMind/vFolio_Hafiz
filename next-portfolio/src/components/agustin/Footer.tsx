@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
 
               <p className="text-xs uppercase font-mono tracking-widest text-white/50 leading-relaxed max-w-sm">
                 FULL STACK DEVELOPER &amp; SOFTWARE ENGINEER <br />
-                KUALA LUMPUR &amp; BANTING, MALAYSIA
+                PUTRAJAYA &amp; KUALA LUMPUR, MALAYSIA
               </p>
             </div>
 
@@ -148,8 +148,6 @@ export const Footer: React.FC = () => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-white/40">
           <p>© {new Date().getFullYear()} Muhammad Hafiz Ruslan. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <span>UiTM CS 1st Class Honours</span>
-            <span>•</span>
             <button onClick={scrollToTop} className="hover:text-white transition-colors">
               Back to Top ↑
             </button>

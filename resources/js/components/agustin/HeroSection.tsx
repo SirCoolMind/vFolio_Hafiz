@@ -5,7 +5,7 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       id="home"
-      className="relative pt-28 pb-16 md:pt-36 md:pb-24 bg-black text-white px-6 md:px-12 overflow-hidden"
+      className="relative pt-28 pb-8 md:pt-36 md:pb-12 bg-black text-white px-6 md:px-12 overflow-hidden"
     >
       {/* Background Subtle Gradient Grid */}
       <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none" />
@@ -13,7 +13,7 @@ export const HeroSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
         {/* Top Split Layout: Left Text & Headline / Right Portrait Photo */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column (Headline, Tagline, Bio, Action Buttons) */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             {/* Availability Badge */}
@@ -101,42 +101,16 @@ export const HeroSection: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent pointer-events-none" />
               <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-2">
                 <div>
-                  <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold block">
-                    Verified Engineer
-                  </span>
                   <span className="text-sm sm:text-base font-mono font-bold text-white block">
                     Muhammad Hafiz Ruslan
                   </span>
                   <span className="text-[11px] font-mono text-white/60">
-                    Banting &amp; KL, Malaysia
+                    Putrajaya &amp; KL, Malaysia
                   </span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Full-Width 4 Quantifiable Benchmark Metric Tiles */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 pt-8 border-t border-white/10">
-          {PORTFOLIO_DATA.stats.map((st, i) => (
-            <div
-              key={i}
-              className="p-5 md:p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-colors"
-            >
-              <span className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold text-white block">
-                {st.value}
-                <span className="text-xs sm:text-sm font-normal text-white/50 ml-1.5 font-sans">
-                  {st.unit}
-                </span>
-              </span>
-              <span className="text-[11px] uppercase font-mono tracking-widest text-white/40 block mt-1.5">
-                {st.label}
-              </span>
-              <p className="text-xs text-white/60 font-sans mt-0.5">
-                {st.desc}
-              </p>
-            </div>
-          ))}
         </div>
       </div>
     </section>

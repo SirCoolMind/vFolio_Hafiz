@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
               <p className="text-xs uppercase font-mono tracking-widest text-white/50 max-w-sm leading-relaxed">
                 Full Stack Developer &amp; Software Engineer
                 <br />
-                Kuala Lumpur &amp; Banting, Malaysia
+                Putrajaya &amp; Kuala Lumpur, Malaysia
               </p>
             </div>
 

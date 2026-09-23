@@ -65,7 +65,7 @@ export const PORTFOLIO_DATA = {
     title: "Laravel Fullstack Web Developer & Software Engineer",
     tagline: "I craft high-throughput web systems, cinematic interfaces, and scalable backend architectures.",
     bio: "Passionate Laravel and Fullstack Engineer based in Malaysia. Known for building high-performance architectures (like generating 1,000+ PDF invoice pages in seconds using LaTeX) and managing complex multi-tenant booking platforms (300+ rooms across 80+ levels). First-class honors Computer Science graduate from UiTM.",
-    location: "Banting & Kuala Lumpur, Malaysia",
+    location: "Putrajaya & Kuala Lumpur, Malaysia",
     origin: "Kuala Lumpur, Malaysia",
     age: 28,
     email: "hafizruslan98@gmail.com",
