@@ -25,6 +25,8 @@ export interface WorkExperience {
   description: string[];
   tech: string[];
   badge?: string;
+  image?: string;
+  imageCaption?: string;
 }
 
 export interface EducationItem {
@@ -92,6 +94,8 @@ export const PORTFOLIO_DATA = {
       period: "Jul 2023 — Present",
       location: "Malaysia",
       badge: "Current Role",
+      image: "/assets/img/imt_tech.jpg",
+      imageCaption: "Hi-Tea Celebration",
       description: [
         "Architected and implemented LaTeX as an ultra-fast asynchronous PDF invoice compilation pipeline, optimized to generate 1,000+ invoice pages in seconds under high enterprise throughput.",
         "Engineered an adaptive room booking engine supporting 300+ rooms distributed across 80+ building levels with dynamic real-time slot resolution and zero booking collision.",
@@ -105,6 +109,8 @@ export const PORTFOLIO_DATA = {
       period: "Sep 2021 — May 2023",
       location: "Malaysia",
       badge: "7 Live Systems",
+      image: "/assets/img/unijaya.jpg",
+      imageCaption: "Unijaya Team Building Event",
       description: [
         "Spearheaded development and maintenance across 7 live client web applications, 4 active pipelines, and 3 internal microservices.",
         "Overhauled database query indexing and API response times, slashing latency by up to 40% across heavy transaction tables.",
