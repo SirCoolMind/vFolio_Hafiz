@@ -1,24 +1,19 @@
-"use client";
-
 import React from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { Navbar } from "@/components/agustin/Navbar";
-import { SkillsSection } from "@/components/agustin/SkillsSection";
-import { ExperienceSection } from "@/components/agustin/ExperienceSection";
-import { EducationSection } from "@/components/agustin/EducationSection";
-import { ContactSection } from "@/components/agustin/ContactSection";
-import { Footer } from "@/components/agustin/Footer";
-import { CustomCursor } from "@/components/agustin/CustomCursor";
+import { CustomCursor } from "./CustomCursor";
+import { Navbar } from "./Navbar";
+import { Footer } from "./Footer";
+import { ExperienceSection } from "./ExperienceSection";
+import { EducationSection } from "./EducationSection";
+import { SkillsSection } from "./SkillsSection";
 import { PORTFOLIO_DATA } from "@/data/portfolio-data";
 
-export default function AboutPage() {
+export const AboutView: React.FC = () => {
   return (
     <div className="bg-black text-white min-h-screen">
       <CustomCursor />
       <Navbar activeSection="about" />
 
-      <main className="pt-32 md:pt-40">
+      <main className="pt-28 md:pt-36">
         {/* Hero Section */}
         <section className="px-6 md:px-12 max-w-7xl mx-auto pb-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-12">
@@ -37,12 +32,10 @@ export default function AboutPage() {
             {/* High-Impact Portrait in Original Color (Top Right) */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
               <div className="relative w-full max-w-[320px] sm:max-w-[360px] aspect-[3/4] rounded-3xl overflow-hidden border border-white/20 shadow-2xl group bg-neutral-900">
-                <Image
-                  src="/assets/img/person.jpg"
+                <img
+                  src={PORTFOLIO_DATA.personal.avatar}
                   alt="Muhammad Hafiz Ruslan"
-                  fill
-                  priority
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
                 <div className="absolute bottom-5 left-5 right-5">
@@ -68,28 +61,26 @@ export default function AboutPage() {
               </span>
             </div>
 
-            <div className="lg:col-span-8 space-y-6 text-base sm:text-lg text-white/80 leading-relaxed font-sans">
+            <div className="lg:col-span-8 space-y-6 text-base sm:text-lg text-white/80 font-sans font-light leading-relaxed">
               <p>
                 I am a First-Class Honours Computer Science graduate from Universiti Teknologi MARA (UiTM) with a 3.53 CGPA. Over the past 4+ years, I have engineered mission-critical backend APIs, high-throughput asynchronous document pipelines, and scalable multi-tenant web applications.
               </p>
               <p>
-                At <b>IMT Tech Sdn Bhd</b>, I architected an asynchronous <b>LaTeX</b> invoice engine generating over <b>1,000+ custom PDF invoice pages in seconds</b>, overcoming heavy processing bottlenecks for enterprise clients. I also designed an adaptive facility allocation system managing <b>300+ rooms across 80+ building levels</b> with zero collision risk.
+                At <b className="font-medium text-white">IMT Tech Sdn Bhd</b>, I architected an asynchronous <b className="font-medium text-white">LaTeX</b> invoice engine generating over 1,000+ custom PDF invoices in seconds, overcoming limitations of conventional DOM parsers. I also developed an adaptive booking algorithm orchestrating 300+ rooms across 80+ levels without collision.
               </p>
               <p>
-                Prior to this at <b>Unijaya Resources</b>, I spearheaded development across <b>7 live client web portals</b>, cutting database query latency by 40% and instituting team-wide code standardizations. My foundation began with a self-taught jump from Java to the MERN stack at <b>Leadmind</b>, where I built a 1,000+ lead management platform with sub-50ms instant search.
+                At <b className="font-medium text-white">Unijaya Resources</b>, I maintained and accelerated 7 enterprise web applications, dropping database query latency by 40% through composite indexing and optimized query structures.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Separated Sections */}
         <SkillsSection />
         <ExperienceSection />
         <EducationSection />
-        <ContactSection />
       </main>
 
       <Footer />
     </div>
   );
-}
+};

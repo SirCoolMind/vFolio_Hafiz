@@ -1,7 +1,4 @@
-"use client";
-
 import React from "react";
-import Image from "next/image";
 import { PORTFOLIO_DATA } from "@/data/portfolio-data";
 
 export const HeroSection: React.FC = () => {
@@ -92,18 +89,16 @@ export const HeroSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Top-Right Full 3:4 Portrait Photo */}
+          {/* Right Column: Top-Right Full 3:4 Portrait Photo in True Color */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <div className="relative w-full max-w-[320px] sm:max-w-[360px] md:max-w-[390px] aspect-[3/4] rounded-3xl overflow-hidden border border-white/20 bg-neutral-900 shadow-2xl group">
-              <Image
-                src="/assets/img/person.jpg"
+              <img
+                src={PORTFOLIO_DATA.personal.avatar}
                 alt="Muhammad Hafiz Ruslan"
-                fill
-                priority
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
               {/* Sleek bottom gradient overlay and pill badge */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent pointer-events-none" />
               <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-2">
                 <div>
                   <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold block">

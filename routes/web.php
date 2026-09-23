@@ -1,9 +1,6 @@
 <?php
 
-use App\Http\Controllers\BudgetTrackerController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [HomeController::class, 'index'])->name('about');
+Route::get('/work', [HomeController::class, 'index'])->name('work');
+Route::get('/services', [HomeController::class, 'index'])->name('services');
+Route::get('/contact', [HomeController::class, 'index'])->name('contact');
+
 Route::post('sendEmail', [HomeController::class, 'sendEmail'])->name('sendEmail');
 
+// Preserved Design Archive Routes
 Route::get('/design-1', function () {
     return view('vfolio.design-1');
 })->name('design-1');

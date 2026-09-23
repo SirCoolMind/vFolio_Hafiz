@@ -1,185 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Virtual Folio - Muhammad Hafiz Ruslan</title>
+    <title>Muhammad Hafiz Ruslan — Laravel Fullstack Developer & Software Engineer</title>
+    <meta name="description" content="Award-winning portfolio for Muhammad Hafiz Ruslan. High-throughput LaTeX document engine, multi-level booking architecture, and fullstack Laravel & Vue/React platforms.">
+    <meta name="keywords" content="Muhammad Hafiz Ruslan, Hafiz Ruslan, Laravel Fullstack Developer, PHP 8.3, LaTeX Engine, Vue.js, React, Next.js, Tailwind CSS, Malaysia">
+    <meta name="author" content="Muhammad Hafiz Ruslan">
 
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Muhammad Hafiz Ruslan — Laravel Fullstack Developer & Software Engineer">
+    <meta property="og:description" content="High-throughput LaTeX document engine, multi-level booking architecture, and fullstack Laravel & Vue/React platforms.">
+    <meta property="og:image" content="{{ asset('assets/img/person.jpg') }}">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/favicon.ico') }}" type="image/x-icon">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/themify-icons.css')}}">
+    <!-- Google Fonts Preconnect & Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Serif+Display:ital,wght@1,300;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/animate/animate.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/owl-carousel/owl.carousel.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/nice-select/css/nice-select.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/fancybox/css/jquery.fancybox.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/virtual.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/topbar.virtual.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome/css/all.min.css') }}">
-    <link href="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+    <!-- Vite Assets -->
+    @viteReactRefresh
+    @vite(['resources/css/app.css', 'resources/js/app.tsx'])
 </head>
+<body class="bg-black text-white antialiased selection:bg-white selection:text-black">
+    <!-- React Root Mount Container -->
+    <div id="root"></div>
 
-<body class="theme-red">
-
-    <!-- Back to top button -->
-    <div class="btn-back_to_top">
-        <span class="ti-arrow-up"></span>
-    </div>
-
-    {{-- @include('vfolio.section.settings') --}}
-
-    @include('vfolio.section.header')
-
-    @include('vfolio.section.about')
-
-    {{-- @include('vfolio.section.service') --}}
-
-    {{-- @include('vfolio.section.funfact') --}}
-
-    <!-- Portfolio page -->
-    @include('vfolio.section.portfolio')
-    <!-- End Portfolio page -->
-
-    <!-- Testimonial -->
-    @include('vfolio.section.testimonial')
-    <!-- End testimonial -->
-
-    <!-- Client -->
-    {{-- @include('vfolio.section.client') --}}
-    <!-- End client -->
-
-    <!-- Blog -->
-    @include('vfolio.section.blog')
-    <!-- End blog -->
-
-    <!-- Contact -->
-    {{-- @include('vfolio.section.contact') --}}
-    <!-- End Contact -->
-
-    <!-- Footer -->
-    @include('vfolio.section.footer')
-    <!-- End footer -->
-
-
-    <script src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
-
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-
-    <script src="{{ asset('assets/vendor/owl-carousel/owl.carousel.min.js') }}"></script>
-
-    <script src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
-
-    <script src="{{ asset('assets/vendor/isotope/isotope.pkgd.min.js') }}"></script>
-
-    <script src="{{ asset('assets/vendor/nice-select/js/jquery.nice-select.min.js') }}"></script>
-
-    <script src="{{ asset('assets/vendor/fancybox/js/jquery.fancybox.min.js') }}"></script>
-
-    <script src="{{ asset('assets/vendor/wow/wow.min.js') }}"></script>
-
-    <script src="{{ asset('assets/vendor/animateNumber/jquery.animateNumber.min.js') }}"></script>
-
-    <script src="{{ asset('assets/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
-
-    <script src="{{ asset('assets/js/topbar-virtual.js') }}"></script>
-
-    <script src="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.all.min.js') }}"></script>
-
-    <script>
-        window.generalFormSubmit = function(elem) {
-            var form = $(elem).closest('form');
-            var refreshFunctionName = form.attr('data-refreshFunctionName');
-            var refreshFunctionNameIfSuccess = form.attr('data-refreshFunctionNameIfSuccess');
-            var refreshFunctionURL = form.attr('data-refreshFunctionURL');
-            var refreshFunctionDivId = form.attr('data-refreshFunctionDivId');
-            var reloadPage = form.attr('data-reloadPage');
-            
-            if (typeof event !== 'undefined' && event.preventDefault) {
-                event.preventDefault();
-            }
-
-            $.ajax({
-                url: $(form).attr('action'),
-                method: $(form).attr('method'),
-                data: new FormData($(form)[0]),
-                async: true,
-                contentType: false,
-                processData: false,
-                success: function(data) {
-
-                    //If data-reloadPage exists, then reload the page
-                    if (reloadPage) {
-                        if (reloadPage == "true") {
-                            location.reload();
-                            return false;
-                        }
-                    }
-
-                    //If redirect page exists, then redirect to the page
-                    if(data.redirectRoute ?? false){
-                        window.location.href = data.redirectRoute;
-                        return false;
-                    }
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Success!',
-                        text: 'Message has been sent to the owner!',
-                    })
-
-                    return false;
-
-                },
-                error: function(data) {
-                    var data = data.responseJSON;
-                    // console.log(data);
-                    if (data.errors === undefined) {
-                        if(data.message == "CSRF token mismatch.")
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Token Expired, Please refresh the page',
-                            })
-                        else
-
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: data.detail,
-                            })
-                    } else {
-                        $('#bahagianErrorBox').html("").show(); //clear error message
-                        let errorsHtml = "<ul>";
-                        $.each(data.errors, function(key, value) {
-                            errorsHtml += '<li>' + value + '</li>';
-                        });
-                        errorsHtml += '</ul>';
-                        $('#bahagianErrorBox').html(errorsHtml); //put error message into box
-                        $('html, body').animate({
-                            scrollTop: 0
-                        }, 'fast'); // scroll to the top
-                    }
-
-
-                    return false;
-                },
-            });
-        }
-    </script>
-
+    <noscript>
+        <div class="p-8 text-center text-white bg-black">
+            <h1 class="text-2xl font-bold">JavaScript Required</h1>
+            <p class="mt-2 text-white/70">Please enable JavaScript to view the full interactive portfolio of Muhammad Hafiz Ruslan.</p>
+        </div>
+    </noscript>
 </body>
-
 </html>
