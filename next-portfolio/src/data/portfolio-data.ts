@@ -39,7 +39,7 @@ export interface EducationItem {
 
 export interface SkillCategory {
   title: string;
-  skills: { name: string; icon: string; tag?: string }[];
+  skills: { name: string; icon: string; tag?: string; level?: number }[];
 }
 
 export interface ServicePack {

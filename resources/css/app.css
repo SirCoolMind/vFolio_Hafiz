@@ -92,3 +92,80 @@ body {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Premium Shiny Glowing Effect (Universal Cross-Browser: Firefox, Chromium, WebKit) */
+@keyframes glow-beam {
+  0% {
+    stroke-dashoffset: 0px;
+  }
+  100% {
+    stroke-dashoffset: -360px;
+  }
+}
+
+.glow-beam-rect {
+  stroke-dasharray: 60px 300px;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.85));
+}
+
+.group\/pill:hover .glow-beam-rect {
+  animation: glow-beam 1.8s linear infinite;
+}
+
+/* Surface Diagonal Shiny Sheen */
+@keyframes shiny-sweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-20deg);
+  }
+}
+
+.shine-sheen-bar {
+  will-change: transform;
+}
+
+.group\/pill:hover .shine-sheen-bar {
+  animation: shiny-sweep 1.2s ease-in-out infinite;
+}
+
+/* Apple iOS App Delete Wiggle / Jiggle Mode (Universal Cross-Browser) */
+@keyframes ios-jiggle {
+  0% {
+    transform: rotate(-2.5deg) translateY(0);
+  }
+  25% {
+    transform: rotate(2deg) translateY(-0.5px);
+  }
+  50% {
+    transform: rotate(-2deg) translateY(0.5px);
+  }
+  75% {
+    transform: rotate(2.5deg) translateY(-0.5px);
+  }
+  100% {
+    transform: rotate(-2.5deg) translateY(0);
+  }
+}
+
+.core-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.group\/pill:hover .core-icon-container {
+  animation: ios-jiggle 0.52s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group\/pill:hover .glow-beam-rect,
+  .group\/pill:hover .shine-sheen-bar,
+  .group\/pill:hover .core-icon-container {
+    animation: none !important;
+  }
+}

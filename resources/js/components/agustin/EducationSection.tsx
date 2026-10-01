@@ -69,11 +69,6 @@ export const EducationSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Bottom verification badge */}
-              <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-white/40">
-                <span>Verified Academic Record</span>
-                <span className="text-emerald-400">✓ Accredited</span>
-              </div>
             </div>
           ))}
         </div>
