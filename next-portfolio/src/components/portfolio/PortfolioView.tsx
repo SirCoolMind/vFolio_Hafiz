@@ -13,7 +13,7 @@ import { TestimonialSection } from "./TestimonialSection";
 import { ContactSection } from "./ContactSection";
 import { Footer } from "./Footer";
 
-export const AgustinPortfolio: React.FC = () => {
+export const PortfolioView: React.FC = () => {
   return (
     <div className="bg-black text-white min-h-screen selection:bg-white selection:text-black">
       {/* Custom Magnetic Cursor */}

@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { Navbar } from "@/components/agustin/Navbar";
-import { ProjectsSection } from "@/components/agustin/ProjectsSection";
-import { ContactSection } from "@/components/agustin/ContactSection";
-import { Footer } from "@/components/agustin/Footer";
-import { CustomCursor } from "@/components/agustin/CustomCursor";
+import { Navbar } from "@/components/portfolio/Navbar";
+import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
+import { ContactSection } from "@/components/portfolio/ContactSection";
+import { Footer } from "@/components/portfolio/Footer";
+import { CustomCursor } from "@/components/portfolio/CustomCursor";
 
 export default function WorkPage() {
   return (

@@ -8,7 +8,7 @@ export const ExperienceSection: React.FC = () => {
       className="relative pt-6 pb-12 md:pt-8 md:pb-16 bg-black text-white px-6 md:px-12 border-t border-white/10"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Agustin-style Numbered Section Header */}
+        {/* Editorial-style Numbered Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
             <div className="flex items-baseline gap-2 mb-3">

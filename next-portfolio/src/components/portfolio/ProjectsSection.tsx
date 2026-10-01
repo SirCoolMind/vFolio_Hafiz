@@ -1,10 +1,14 @@
+"use client";
+
 import React, { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { PORTFOLIO_DATA, ProjectCaseStudy } from "@/data/portfolio-data";
 import { ProjectModal } from "./ProjectModal";
 
 export const ProjectsSection: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
   const [selectedProject, setSelectedProject] = useState<ProjectCaseStudy | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string>("All");
 
   const categories = ["All", "Fullstack", "High Performance", "Enterprise", "Frontend & UI", "Systems"];
 
@@ -14,34 +18,27 @@ export const ProjectsSection: React.FC = () => {
       : PORTFOLIO_DATA.projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section
-      id="work"
-      className="relative py-12 md:py-16 bg-black text-white px-6 md:px-12 border-t border-white/10"
-    >
+    <section id="work" className="relative py-12 md:py-16 bg-black text-white px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
-            <div className="flex items-baseline gap-2 mb-3">
-              <span className="text-xs font-mono font-bold tracking-widest text-white/50">
-                (04)
-              </span>
-              <span className="font-serif italic text-lg text-white/60">
-                selected work
-              </span>
+            <div className="flex items-center gap-3 text-white/40 mb-3">
+              <span className="text-xl md:text-2xl font-mono font-bold text-white">(04)</span>
+              <span className="font-serif italic text-lg text-white/70">selected work</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-white">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-tight text-white">
               Case <span className="font-bold">studies</span>
             </h2>
           </div>
 
-          <p className="text-sm md:text-base text-white/60 font-sans max-w-md leading-relaxed">
+          <p className="text-sm md:text-base text-white/60 font-sans max-w-md">
             Interactive breakdown of 10 real production systems, document pipelines, scheduling platforms, and web engines.
           </p>
         </div>
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap gap-2 md:gap-3 mb-12">
+        {/* Filter Bar */}
+        <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-12 pb-6 border-b border-white/10">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -58,7 +55,7 @@ export const ProjectsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Project List (Agustin Burgos editorial link style) */}
+        {/* Project List (Editorial link style) */}
         <div className="divide-y divide-white/10 border-y border-white/10">
           {filteredProjects.map((project, idx) => (
             <div
@@ -124,13 +121,16 @@ export const ProjectsSection: React.FC = () => {
             </div>
           ))}
         </div>
-      </div>
 
-      {/* Case Study Modal */}
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
+        {/* Modal viewer */}
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+
+        {/* Distinct Section Separator */}
+        <div className="mt-20 divider-line" />
+      </div>
     </section>
   );
 };

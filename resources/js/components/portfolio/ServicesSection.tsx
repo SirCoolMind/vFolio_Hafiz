@@ -10,7 +10,7 @@ export const ServicesSection: React.FC = () => {
       className="relative py-12 md:py-16 bg-black text-white px-6 md:px-12 border-t border-white/10"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Agustin-style Section Header */}
+        {/* Editorial-style Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
             <div className="flex items-baseline gap-2 mb-3">

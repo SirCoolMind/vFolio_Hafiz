@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { AgustinPortfolio } from "./components/agustin/AgustinPortfolio";
-import { AboutView } from "./components/agustin/AboutView";
-import { WorkView } from "./components/agustin/WorkView";
-import { ServicesView } from "./components/agustin/ServicesView";
-import { ContactView } from "./components/agustin/ContactView";
+import { PortfolioView } from "./components/portfolio/PortfolioView";
+import { AboutView } from "./components/portfolio/AboutView";
+import { WorkView } from "./components/portfolio/WorkView";
+import { ServicesView } from "./components/portfolio/ServicesView";
+import { ContactView } from "./components/portfolio/ContactView";
 import "../css/app.css";
 
 const App: React.FC = () => {
@@ -23,7 +23,7 @@ const App: React.FC = () => {
     return <ContactView />;
   }
 
-  return <AgustinPortfolio />;
+  return <PortfolioView />;
 };
 
 const rootElement = document.getElementById("root");

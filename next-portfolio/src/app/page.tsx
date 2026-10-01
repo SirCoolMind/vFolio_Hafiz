@@ -1,6 +1,6 @@
 import React from "react";
-import { AgustinPortfolio } from "@/components/agustin/AgustinPortfolio";
+import { PortfolioView } from "@/components/portfolio/PortfolioView";
 
 export default function Home() {
-  return <AgustinPortfolio />;
+  return <PortfolioView />;
 }

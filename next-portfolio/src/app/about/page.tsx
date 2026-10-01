@@ -3,13 +3,13 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Navbar } from "@/components/agustin/Navbar";
-import { SkillsSection } from "@/components/agustin/SkillsSection";
-import { ExperienceSection } from "@/components/agustin/ExperienceSection";
-import { EducationSection } from "@/components/agustin/EducationSection";
-import { ContactSection } from "@/components/agustin/ContactSection";
-import { Footer } from "@/components/agustin/Footer";
-import { CustomCursor } from "@/components/agustin/CustomCursor";
+import { Navbar } from "@/components/portfolio/Navbar";
+import { SkillsSection } from "@/components/portfolio/SkillsSection";
+import { ExperienceSection } from "@/components/portfolio/ExperienceSection";
+import { EducationSection } from "@/components/portfolio/EducationSection";
+import { ContactSection } from "@/components/portfolio/ContactSection";
+import { Footer } from "@/components/portfolio/Footer";
+import { CustomCursor } from "@/components/portfolio/CustomCursor";
 import { PORTFOLIO_DATA } from "@/data/portfolio-data";
 
 export default function AboutPage() {

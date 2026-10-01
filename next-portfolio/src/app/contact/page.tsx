@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { Navbar } from "@/components/agustin/Navbar";
-import { ContactSection } from "@/components/agustin/ContactSection";
-import { Footer } from "@/components/agustin/Footer";
-import { CustomCursor } from "@/components/agustin/CustomCursor";
+import { Navbar } from "@/components/portfolio/Navbar";
+import { ContactSection } from "@/components/portfolio/ContactSection";
+import { Footer } from "@/components/portfolio/Footer";
+import { CustomCursor } from "@/components/portfolio/CustomCursor";
 
 export default function ContactPage() {
   return (

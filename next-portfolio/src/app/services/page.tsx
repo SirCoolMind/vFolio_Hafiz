@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import { Navbar } from "@/components/agustin/Navbar";
-import { ServicesSection } from "@/components/agustin/ServicesSection";
-import { TestimonialSection } from "@/components/agustin/TestimonialSection";
-import { ContactSection } from "@/components/agustin/ContactSection";
-import { Footer } from "@/components/agustin/Footer";
-import { CustomCursor } from "@/components/agustin/CustomCursor";
+import { Navbar } from "@/components/portfolio/Navbar";
+import { ServicesSection } from "@/components/portfolio/ServicesSection";
+import { TestimonialSection } from "@/components/portfolio/TestimonialSection";
+import { ContactSection } from "@/components/portfolio/ContactSection";
+import { Footer } from "@/components/portfolio/Footer";
+import { CustomCursor } from "@/components/portfolio/CustomCursor";
 
 export default function ServicesPage() {
   return (
