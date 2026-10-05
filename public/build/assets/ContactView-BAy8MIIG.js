@@ -1,1 +1,0 @@
-import{j as s,C as t,N as a,c as e,F as c}from"./app-CV6jtG2n.js";const x=()=>s.jsxs("div",{className:"bg-black text-white min-h-screen",children:[s.jsx(t,{}),s.jsx(a,{activeSection:"contact"}),s.jsx("main",{className:"pt-28 md:pt-32 px-2 sm:px-4 space-y-3 sm:space-y-4 max-w-[1500px] mx-auto",children:s.jsx(e,{})}),s.jsx(c,{})]});export{x as ContactView};

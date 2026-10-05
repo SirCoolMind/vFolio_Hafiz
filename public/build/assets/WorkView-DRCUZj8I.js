@@ -1,1 +1,0 @@
-import{j as s,C as e,N as a,b as t,F as r}from"./app-CV6jtG2n.js";const x=()=>s.jsxs("div",{className:"bg-black text-white min-h-screen",children:[s.jsx(e,{}),s.jsx(a,{activeSection:"work"}),s.jsx("main",{className:"pt-28 md:pt-32 px-2 sm:px-4 space-y-3 sm:space-y-4 max-w-[1500px] mx-auto",children:s.jsx(t,{})}),s.jsx(r,{})]});export{x as WorkView};
