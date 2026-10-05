@@ -1,20 +1,14 @@
-export interface ProjectCaseStudy {
+export interface ProjectShowcase {
   id: string;
   title: string;
-  subtitle: string;
-  category: "Fullstack" | "High Performance" | "Enterprise" | "Frontend & UI" | "Systems";
-  tags: string[];
-  metrics: string;
-  highlight: string;
-  problem: string;
-  solution: string;
-  architecture: string[];
-  techStack: string[];
-  demoUrl?: string;
+  tagline: string;
+  description: string;
+  highlights: string[];
+  tech: string[];
+  liveUrl?: string;
   githubUrl?: string;
-  image: string;
-  featured: boolean;
-  year: string;
+  note?: string;
+  screenshots: { src: string; caption: string }[];
 }
 
 export interface WorkExperience {
@@ -42,15 +36,6 @@ export interface SkillCategory {
   skills: { name: string; icon: string; tag?: string }[];
 }
 
-export interface ServicePack {
-  number: string;
-  title: string;
-  subtitle: string;
-  tag: string;
-  description: string;
-  deliverables: string[];
-}
-
 export interface Testimonial {
   quote: string;
   author: string;
@@ -58,26 +43,27 @@ export interface Testimonial {
   company: string;
   avatar: string;
   linkedInPostUrl: string;
+  image?: string;
+  imageCaption?: string;
 }
 
 export const PORTFOLIO_DATA = {
   personal: {
     name: "Muhammad Hafiz Ruslan",
     shortName: "Hafiz Ruslan",
-    title: "Laravel Fullstack Web Developer & Software Engineer",
+    title: "AI-Assisted Full-Stack Developer & Software Engineer",
     tagline: "I craft high-throughput web systems, cinematic interfaces, and scalable backend architectures.",
-    bio: "Passionate Laravel and Fullstack Engineer based in Malaysia. Known for building high-performance architectures (like generating 1,000+ PDF invoice pages in seconds using LaTeX) and managing complex multi-tenant booking platforms (300+ rooms across 80+ levels). First-class honors Computer Science graduate from UiTM.",
+    bio: "AI-assisted full-stack developer and software engineer based in Malaysia. Known for building high-performance architectures (like generating 1,000+ PDF invoice pages in seconds using LaTeX) and managing complex multi-tenant booking platforms (300+ rooms across 80+ levels). First-class honors Computer Science graduate from UiTM.",
     location: "Putrajaya & Kuala Lumpur, Malaysia",
     origin: "Kuala Lumpur, Malaysia",
     age: 28,
-    email: "hafizruslan98@gmail.com",
-    alternateEmail: "hafizcoolman@gmail.com",
+    email: "hafizcoolman@gmail.com",
     github: "https://github.com/SirCoolMind",
     linkedin: "https://www.linkedin.com/in/hafizruslan98/",
     resumeUrl: "/assets/file/Resume Muhammad Hafiz Ruslan 2026.pdf",
     cvUrl: "/assets/file/CV Muhammad Hafiz Ruslan 2026.pdf",
-    avatar: "/assets/img/person.jpg",
-    status: "Open for Fullstack Engineering & High-Impact Contracts",
+    avatar: "/assets/img/person.webp",
+    status: "Open for Full-Stack Engineering & High-Impact Contracts",
     combatSpamAnswer: "19", // 17 + 2
   },
 
@@ -90,80 +76,101 @@ export const PORTFOLIO_DATA = {
 
   workExperience: [
     {
-      company: "IMT Tech Sdn Bhd",
-      role: "PHP Programmer / Fullstack Engineer",
-      period: "Jul 2023 — Present",
-      location: "Malaysia",
+      company: "Unijaya Resources Sdn Bhd",
+      role: "Senior PHP Programmer · Lead Programmer",
+      period: "Jun 2025 – Present",
+      location: "Kuala Lumpur City Centre",
       badge: "Current Role",
-      image: "/assets/img/imt_tech.jpg",
+      image: "/assets/img/unijaya_cooking_event.webp",
+      imageCaption: "Cooking Steak Event - Team C Winner",
+      description: [
+        "Lead Programmer across multiple government and enterprise projects, owning technical planning, requirement alignment and client communication.",
+        "Took over a national-scale placement system mid-project and realigned delivery, processing 16M+ applicants and 160–240M applications yearly.",
+        "Replaced a Power BI solution with an engineered backend and OLAP database: report generation cut from 3 minutes to under 3 seconds, with 14M daily rows processed in about 1 second.",
+        "Core Solution Architect in the company's GitLab partnership and Git lead; introduced full CI/CD pipelines with a DevSecOps flow (SAST, DAST, VAPT).",
+        "Championed company-wide AI adoption (Google AI to Anthropic Claude) and delivered proofs of concept with GitLab, NVIDIA, HPE and Huawei.",
+      ],
+      tech: ["Laravel", "PHP", "Vue.js", "ClickHouse", "PostgreSQL", "GitLab CI/CD", "DevSecOps", "Claude Code"],
+    },
+    {
+      company: "IMT Tech Sdn Bhd",
+      role: "PHP Programmer",
+      period: "Jul 2023 – Jun 2025",
+      location: "Bangsar South, KL",
+      badge: "Innovation of the Year 2024",
+      image: "/assets/img/imt_tech.webp",
       imageCaption: "Hi-Tea Celebration",
       description: [
-        "Architected and implemented LaTeX as an ultra-fast asynchronous PDF invoice compilation pipeline, optimized to generate 1,000+ invoice pages in seconds under high enterprise throughput.",
-        "Engineered an adaptive room booking engine supporting 300+ rooms distributed across 80+ building levels with dynamic real-time slot resolution and zero booking collision.",
-        "Collaborated closely with senior technical leads (10+ years experience), delivering high-velocity backend APIs and responsive administrative dashboards.",
+        "Built a Transport Management System from scratch with a team of 3 (40+ vehicles, 2,000+ passengers), then led Phase 2; it won Innovation of the Year 2024 in Singapore.",
+        "Implemented a LaTeX invoice engine with a wrapper package for legacy projects, generating 1,000+ page invoices in seconds for large clients.",
+        "Developed a booking system with adaptive working hours and days, managing 300+ meeting rooms across an 80+ level building.",
+        "Built frontend and backend data-migration packages that cut client data migration from hours to minutes.",
+        "Self-taught in Vue.js and delivered output on par with senior team members with 10+ years of experience.",
       ],
-      tech: ["Laravel", "PHP", "LaTeX", "MySQL", "Redis", "Vue.js", "REST APIs"],
+      tech: ["Laravel", "PHP", "Vue.js", "Node.js", "LaTeX", "MySQL", "GitLab"],
     },
     {
       company: "Unijaya Resources Sdn Bhd",
       role: "PHP Developer",
-      period: "Sep 2021 — May 2023",
-      location: "Malaysia",
-      badge: "7 Live Systems",
-      image: "/assets/img/unijaya.jpg",
+      period: "Sep 2021 – May 2023",
+      location: "Kuala Lumpur City Centre",
+      badge: "14 Government Projects",
+      image: "/assets/img/unijaya.webp",
       imageCaption: "Unijaya Team Building Event",
       description: [
-        "Spearheaded development and maintenance across 7 live client web applications, 4 active pipelines, and 3 internal microservices.",
-        "Overhauled database query indexing and API response times, slashing latency by up to 40% across heavy transaction tables.",
-        "Modernized frontend UI/UX workflows and instituted team-wide code standards and Git flow practices.",
+        "Grew from Laravel beginner to senior full-stack developer and technical advisor to 15+ staff and interns.",
+        "Developed and maintained 14 government projects with complex modules and workflows.",
+        "Advised on technical decisions across 7 projects, improving performance by up to 170% through API optimization, database tuning and server load improvements.",
+        "Contributed 2 in-house packages (role, permission and module-status flow; server file handling) that cut prototype-to-development time by 60%.",
+        "Led a team of 3 to deliver a helpdesk system in 1 week, and designed a parallel Talend ETL flow that processes 100,000+ records in 8 seconds.",
       ],
-      tech: ["Laravel", "PHP", "Vue.js", "MySQL", "Bootstrap", "REST APIs", "Spatie Roles"],
+      tech: ["Laravel", "PHP", "Vue.js", "MySQL", "PostgreSQL", "Talend", "REST APIs"],
     },
     {
       company: "Leadmind Sdn Bhd",
-      role: "Internship Lead Programming",
-      period: "Mar 2021 — Aug 2021",
-      location: "Malaysia",
+      role: "Lead Programmer Intern",
+      period: "Mar 2021 – Aug 2021",
+      location: "Cyberjaya, Selangor",
       badge: "MERN Stack",
       description: [
-        "Built a complete customer acquisition and lead management web application using the MERN stack (MongoDB, Express, React, Node.js) handling 1,000+ active enterprise leads.",
-        "Rapidly self-learned and migrated legacy Java codebase to modern TypeScript/JavaScript MERN stack within strict deadlines.",
-        "Implemented real-time filtering, fuzzy search indexing, and automated sales pipeline status dispatchers.",
+        "Sole developer, owning delivery of the company's internal systems end to end.",
+        "Built a Java and Apache system to manage company data, then upgraded to the MERN stack (MongoDB, Express, React, Node.js) to deliver a website managing 1,000+ leads.",
+        "Improved user experience with smooth navigation and fast algorithms that deliver accurate leads data, picking up new technologies quickly with minimal guidance.",
       ],
-      tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JavaScript", "Tailwind CSS"],
+      tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Java", "Apache"],
     },
   ] as WorkExperience[],
 
   education: [
     {
-      degree: "Bachelor Degree of Computer Science",
-      institution: "Universiti Teknologi MARA (UiTM)",
-      period: "2018 — 2021",
-      grade: "CGPA: 3.53 (First-Class Honors)",
+      degree: "Bachelor of Science in Computer Science",
+      institution: "Universiti Teknologi MARA (UiTM), Jasin",
+      period: "Mar 2018 – Aug 2021",
+      grade: "CGPA 3.53",
       highlights: [
-        "First-Class Honors Graduate combining academic excellence with university community leadership.",
+        "First Class Honours graduate, combining academic excellence with university community leadership.",
         "Project Leader for Build-IT KICTM (2019).",
         "Lead Instructor for Computer Science Association (CSA) Workshop (2020).",
         "Active Committee Member in Sekretariat Mahasiswa Fakulti (SMF) & Computer Science Association (CSA).",
       ],
     },
     {
-      degree: "Science PST Module II",
-      institution: "Selangor Matriculation College",
-      period: "2016 — 2017",
-      grade: "CGPA: 3.83",
+      degree: "Science PST Module II (Matriculation)",
+      institution: "Kolej Matrikulasi Selangor, Banting",
+      period: "Jun 2016 – Jun 2017",
+      grade: "CGPA 3.83",
       highlights: [
         "Excellence in Mathematics, Physics, and Computer Science foundation.",
-        "Appointed Peer Guidance Leader (Pembimbing Rakan Sebaya — PRD).",
+        "Appointed Peer Guidance Leader (Pembimbing Rakan Sebaya, PRD).",
       ],
     },
     {
       degree: "Pure Science (SPM)",
       institution: "Sekolah Menengah Kebangsaan Padang Tembak",
-      period: "2011 — 2015",
+      period: "2011 – 2015",
       grade: "6A 2B 2C",
       highlights: [
-        "School Prefect (Form 1 — Form 5), Class Monitor, and Entrepreneurship Club Executive.",
+        "School Prefect (Form 1 to Form 5), Class Monitor, and Entrepreneurship Club Executive.",
       ],
     },
   ] as EducationItem[],
@@ -208,202 +215,51 @@ export const PORTFOLIO_DATA = {
 
   projects: [
     {
-      id: "budget-tracker",
-      title: "Budget Tracker Web Intelligence",
-      subtitle: "Personal Expense Intelligence & Real-Time Financial Ledger",
-      category: "Fullstack",
-      tags: ["Laravel 9/10", "Vue.js", "MySQL", "ApexCharts", "Tailwind CSS"],
-      metrics: "Sub-100ms Query Aggregation across 10,000+ Transactions",
-      highlight: "Interactive personal budgeting platform with daily spend heatmaps, category hierarchies, and instant visual trend forecasting.",
-      problem: "Traditional expense trackers suffer from slow daily SQL aggregation loops and clunky multi-step expense entries, making habit tracking tedious.",
-      solution: "Engineered single-pass SQL grouped aggregation (`DAY(date_spent), SUM(money_spent)`) paired with snappy Vue.js reactive modals and automated weekly pacing alerts.",
-      architecture: [
-        "Single-pass indexed SQL grouping eliminating N+1 daily loops",
-        "Reactive modal transaction drawer with instant balance reconciliations",
-        "Spatie permission-controlled multi-currency workspace",
+      id: "purecut",
+      title: "PureCut",
+      tagline: "In-browser AI background remover",
+      description:
+        "Removes image backgrounds entirely on your device. The AI model (~45 MB) downloads once and runs in the browser on WebGPU or CPU, so no image is ever uploaded to a server.",
+      highlights: [
+        "Magic Brush to erase stray background or restore clipped detail, with undo",
+        "Standard presets or a Power User studio for edge and alpha tuning",
+        "Live telemetry: duration, MP/s throughput, RAM heap and threads",
       ],
-      techStack: ["Laravel", "PHP 8.2", "Vue 3", "MySQL", "ApexCharts"],
-      demoUrl: "https://tracker.hafiz.day",
-      githubUrl: "https://github.com/SirCoolMind/vFolio_Hafiz",
-      image: "/assets/img/coming_soon_1.png",
-      featured: true,
-      year: "2024",
+      tech: ["Vue.js", "Vite", "ONNX Runtime", "WebGPU", "WASM"],
+      liveUrl: "https://sircoolmind.github.io/PureCut/",
+      githubUrl: "https://github.com/SirCoolMind/PureCut",
+      screenshots: [
+        { src: "/assets/img/projects/purecut/01-home-upload.webp", caption: "Upload: drop, pick or paste an image, or try the sample" },
+        { src: "/assets/img/projects/purecut/02-processing.webp", caption: "Processing: four-step progress with live CPU and RAM readouts" },
+        { src: "/assets/img/projects/purecut/03-result-compare-standard.webp", caption: "Result: before/after slider with one-click quick presets" },
+        { src: "/assets/img/projects/purecut/04-magic-brush-power-user.webp", caption: "Magic Brush in Power User mode with edge controls" },
+        { src: "/assets/img/projects/purecut/05-version-changelog-dialog.webp", caption: "Changelog, roadmap and storage & cache dialog" },
+      ],
     },
     {
-      id: "latex-invoice-engine",
-      title: "Ultra-Fast LaTeX PDF Invoice Pipeline",
-      subtitle: "High-Throughput Asynchronous Document Generation Engine",
-      category: "High Performance",
-      tags: ["PHP 8.2", "LaTeX", "Node.js", "Redis Queues", "Linux CLI"],
-      metrics: "1,000+ Custom Invoice Pages Compiled in Seconds",
-      highlight: "Engineered an asynchronous LaTeX PDF generation microservice outperforming legacy DomPDF / TCPDF by over 800% in generation speed and pixel precision.",
-      problem: "Client invoice batches with hundreds of pages were timing out on standard PHP DOM-based PDF generation engines.",
-      solution: "Built a customized LaTeX compilation pipeline using templated markup engines and background Redis worker pools with zero memory leaks.",
-      architecture: [
-        "Asynchronous Redis-backed job worker pipeline",
-        "Optimized headless LaTeX rendering daemon",
-        "Vector-perfect financial typography with dynamic QR codes & digital stamps",
+      id: "noterecall",
+      title: "NoteRecall",
+      tagline: "Local-first meeting transcriber",
+      description:
+        "Turns a meeting recording into a transcript that says who said what, plus a short summary. Built for Bahasa Melayu, English, or both mixed together, and runs on your own computer.",
+      highlights: [
+        "Whisper large-v3 transcription with speaker diarization",
+        "LLM-generated key points summary for every recording",
+        "Private by default, with an optional Google Gemini cloud engine",
       ],
-      techStack: ["PHP 8.2", "LaTeX", "Redis", "Laravel Queues", "Ubuntu CLI"],
-      featured: true,
-      year: "2023",
-    },
-    {
-      id: "room-booking-system",
-      title: "Multi-Level Adaptive Room Booking System",
-      subtitle: "Enterprise Facility Allocation Engine across 80+ Building Floors",
-      category: "Enterprise",
-      tags: ["Laravel", "MySQL", "Vue.js", "WebSockets", "FullCalendar"],
-      metrics: "Manages 300+ Concurrent Rooms across 80+ Physical Floors",
-      highlight: "Comprehensive space allocation platform with slot collision avoidance, variable hourly slots, and multi-tier approval workflows.",
-      problem: "Managing 300+ multi-purpose rooms in a high-rise tower caused double bookings and fragmented schedule updates.",
-      solution: "Developed an algorithmic timeline collision engine with optimistic locking, floor-level spatial visualizers, and instant calendar sync.",
-      architecture: [
-        "Time-range overlap matrix algorithms with optimistic concurrency locking",
-        "Multi-level building floor plan SVG mapping",
-        "Automated notification triggers for security clearance and room key issuance",
+      tech: ["Python", "FastAPI", "Whisper", "Speaker Diarization", "Gemini"],
+      githubUrl: "https://github.com/SirCoolMind/NoteRecall",
+      note: "Runs locally, no live demo",
+      screenshots: [
+        { src: "/assets/img/projects/noterecall/01-home-new-recording.webp", caption: "New recording: language, speakers and engine options" },
+        { src: "/assets/img/projects/noterecall/02-home-recordings-list.webp", caption: "Recordings grouped by month, with search and status filters" },
+        { src: "/assets/img/projects/noterecall/03-recording-transcript.webp", caption: "Transcript with speaker timeline and timestamps" },
+        { src: "/assets/img/projects/noterecall/04-recording-summary.webp", caption: "AI-generated key points summary" },
+        { src: "/assets/img/projects/noterecall/05-settings-general.webp", caption: "Settings: default language, interface language and theme" },
+        { src: "/assets/img/projects/noterecall/06-settings-transcription.webp", caption: "Transcription engine: local Whisper or Gemini cloud" },
       ],
-      techStack: ["Laravel", "MySQL", "Vue.js", "Tailwind CSS", "Pusher WebSockets"],
-      featured: true,
-      year: "2023",
     },
-    {
-      id: "leadmind-crm",
-      title: "LeadMind MERN Lead Management Engine",
-      subtitle: "High-Throughput Customer Lead Engine & Algorithmic Sorting",
-      category: "Fullstack",
-      tags: ["MongoDB", "Express.js", "React.js", "Node.js", "JWT Auth"],
-      metrics: "1,000+ Enterprise Leads Managed with <50ms Instant Search",
-      highlight: "Modernized lead qualification engine built during an intensive tech migration from legacy Java to a fluid MERN architecture.",
-      problem: "Legacy desktop Java app created bottlenecks in distributed sales team operations and lacked responsive mobile access.",
-      solution: "Rebuilt from scratch as a cloud-native MERN app featuring fuzzy search indexing, role-based pipeline columns, and real-time status notifications.",
-      architecture: [
-        "MongoDB compound indexing on lead score and disposition status",
-        "Express REST micro-router with strict token authentication",
-        "React virtualized table rendering smooth 60fps infinite scroll",
-      ],
-      techStack: ["React.js", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
-      featured: true,
-      year: "2021",
-    },
-    {
-      id: "unijaya-enterprise-suite",
-      title: "Unijaya Enterprise Multi-Client Platform Suite",
-      subtitle: "Ecosystem of 7 Live Deployed Client Web Portals & Microservices",
-      category: "Enterprise",
-      tags: ["Laravel 9", "Vuexy Admin", "MySQL", "Spatie Roles", "REST APIs"],
-      metrics: "7 Enterprise Production Portals & 40% Query Latency Reduction",
-      highlight: "Fullstack architecture, database indexing, and API modernization across 7 live client web applications.",
-      problem: "Disjointed codebases across multiple client projects required unified code standards, robust RBAC, and responsive dashboards.",
-      solution: "Standardized on modular Laravel micro-services with centralized Spatie role management, DataTables integration, and reusable UI components.",
-      architecture: [
-        "Spatie Role & Permission granularity across hundreds of enterprise users",
-        "Yajra DataTables backend server-side pagination with query optimization",
-        "Impersonation audit trail for senior support technicians",
-      ],
-      techStack: ["Laravel 9", "Vuexy UI", "MySQL", "PHP 8.1", "Bootstrap 5"],
-      featured: true,
-      year: "2022",
-    },
-    {
-      id: "timetracker-app",
-      title: "TimeTracker Productivity & Billable Hours Suite",
-      subtitle: "Cross-Platform Worklog & Automated Invoice Dispatcher",
-      category: "Systems",
-      tags: ["Laravel", "React", "MySQL", "PWA", "Chart.js"],
-      metrics: "Automated timesheets with 100% billable hour tracking",
-      highlight: "Time and productivity analytics suite empowering freelance and agency engineers to track project hours and auto-generate client invoices.",
-      problem: "Manual spreadsheet time tracking caused delayed invoicing and unbilled developer work.",
-      solution: "Engineered one-click desktop/mobile timer sync with automated threshold notifications, timesheet PDF export, and project budget dials.",
-      architecture: [
-        "Local-first IndexedDB offline sync with cloud reconciliation",
-        "Dynamic hourly rate calculators per client contract",
-        "Real-time burn-down charts for sprint allocations",
-      ],
-      techStack: ["Laravel", "React", "MySQL", "Tailwind CSS"],
-      demoUrl: "https://timetracker.hafiz.day",
-      featured: false,
-      year: "2024",
-    },
-    {
-      id: "vfolio-matrix",
-      title: "Virtual Folio & Anti-Spam Security Matrix",
-      subtitle: "Dynamic Multi-Theme Portfolio Hub with Bot Combat Engine",
-      category: "Frontend & UI",
-      tags: ["Next.js", "Tailwind CSS", "Framer Motion", "PHP Backend", "Visitor Logs"],
-      metrics: "100% Bot Filtering via Arithmetic Combat & Shetabit Logging",
-      highlight: "Next-generation multi-theme portfolio engine with visitor session telemetry, custom math bot combat filter (`17 + 2`), and dynamic theme engine.",
-      problem: "Generic portfolios suffer from cookie-cutter designs and spam contact submissions without telemetry on visitor behavior.",
-      solution: "Created 10 cinematic award-winning design archetypes powered by a unified animation engine, dynamic math spam verification, and device fingerprint logging.",
-      architecture: [
-        "Dynamic arithmetic anti-spam challenge validation (`17 + 2 = 19`)",
-        "Shetabit visit telemetry tracking browser, device, and request metrics",
-        "Ultra-fast reactive contact form directly connected to Laravel backend",
-      ],
-      techStack: ["React 18", "Tailwind CSS", "Framer Motion", "TypeScript", "Laravel"],
-      demoUrl: "http://vfolio.test:8080",
-      githubUrl: "https://github.com/SirCoolMind/vFolio_Hafiz",
-      featured: true,
-      year: "2026",
-    },
-    {
-      id: "cloud-billing-ledger",
-      title: "Automated Recurrent Billing & Financial Ledger",
-      subtitle: "Enterprise Subscription & Double-Entry Accounting Engine",
-      category: "Enterprise",
-      tags: ["Laravel", "MySQL", "Stripe API", "Cron Queues", "Vue.js"],
-      metrics: "Zero-Downtime Cron Dispatching for 5,000+ Monthly Invoices",
-      highlight: "Robust financial ledger system with double-entry accounting rules, failed charge retries, and automated tax calculations.",
-      problem: "Subscription businesses lost revenue due to failed payment webhooks and lack of auditable double-entry ledgers.",
-      solution: "Built idempotent webhook consumers, automated dunning retry schedules, and real-time reconciliation ledgers.",
-      architecture: [
-        "Idempotent event-driven webhook processing",
-        "Immutable ledger journal entries for compliance",
-        "Automated monthly invoice dispatch with LaTeX rendering",
-      ],
-      techStack: ["Laravel", "MySQL", "Vue.js", "Stripe Webhooks"],
-      featured: false,
-      year: "2023",
-    },
-    {
-      id: "uitm-buildit-portal",
-      title: "UiTM Build-IT & CSA Community Hackathon Hub",
-      subtitle: "Academic Workshop Distribution & Real-Time Hackathon Scoring",
-      category: "Frontend & UI",
-      tags: ["PHP", "JavaScript", "Bootstrap", "MySQL", "CSS3"],
-      metrics: "300+ Students Coordinated & 50+ Hackathon Submissions Judged",
-      highlight: "Platform created during leadership as Project Leader for Build-IT KICTM (2019) and Instructor for CSA Workshop (2020).",
-      problem: "University hackathons suffered from fragmented Google Form submissions and manual score tabulations.",
-      solution: "Engineered a centralized portal for real-time team registrations, workshop resource downloads, and multi-judge rubric scoring.",
-      architecture: [
-        "Multi-judge live scoring tabulation algorithm",
-        "Workshop repository with code sandbox links",
-        "Automated certificate generation for attendees",
-      ],
-      techStack: ["PHP", "JavaScript", "MySQL", "Bootstrap"],
-      featured: false,
-      year: "2020",
-    },
-    {
-      id: "apex-telemetry-dashboard",
-      title: "Apex Live Gaming & Systems Telemetry HUD",
-      subtitle: "Low-Latency WebSocket Streaming & Server Health Monitor",
-      category: "Systems",
-      tags: ["React", "Node.js", "WebSockets", "Tailwind CSS", "Canvas API"],
-      metrics: "60 FPS Real-Time Canvas Rendering with <20ms WebSocket Latency",
-      highlight: "Cinematic HUD dashboard monitoring game streaming telemetry, memory/CPU metrics, and network packet health in real time.",
-      problem: "Standard browser dashboards choke when rendering high-frequency 60Hz telemetry data streams.",
-      solution: "Leveraged offscreen Canvas rendering and binary WebSocket streams to deliver buttery-smooth 60fps graph updates.",
-      architecture: [
-        "Offscreen HTML5 Canvas rendering engine for high-frequency tick charts",
-        "Binary WebSocket packet unpacking minimizing payload overhead",
-        "Custom cybernetic HUD audio-visual alert states",
-      ],
-      techStack: ["React", "TypeScript", "Node.js", "HTML5 Canvas", "Tailwind CSS"],
-      featured: false,
-      year: "2025",
-    },
-  ] as ProjectCaseStudy[],
+  ] as ProjectShowcase[],
 
   testimonials: [
     {
@@ -413,49 +269,9 @@ export const PORTFOLIO_DATA = {
       company: "Unijaya Resources Sdn Bhd",
       avatar: "/assets/img/logo/unijaya_logo.png",
       linkedInPostUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7069236571287269376/",
+      image: "/assets/img/unijaya_endorsement.webp",
+      imageCaption: "With the Unijaya Resources team",
     },
   ] as Testimonial[],
 
-  servicePacks: [
-    {
-      number: "01",
-      title: "Enterprise Fullstack Web Development",
-      subtitle: "Custom Web Applications & Multi-Tenant Portals",
-      tag: "Project or Retainer",
-      description: "End-to-end engineering from system architecture to deployment. Specializing in Laravel, Vue.js, React, and Next.js for high-demand business workflows.",
-      deliverables: ["Modular MVC Architecture", "RESTful & GraphQL APIs", "Robust RBAC (Spatie)", "Responsive UI/UX"],
-    },
-    {
-      number: "02",
-      title: "High-Throughput Document Engines",
-      subtitle: "Asynchronous PDF & Report Pipelines",
-      tag: "Specialized Engine",
-      description: "Ultra-fast document generation replacing sluggish DOM parsers. Capable of compiling 1,000+ custom PDF invoices in seconds with vector-perfect typography.",
-      deliverables: ["LaTeX Engine Microservice", "Redis Queue Dispatchers", "Multi-Threaded Workers", "Dynamic Barcode/QR Code Embeds"],
-    },
-    {
-      number: "03",
-      title: "Complex Allocation & Booking Systems",
-      subtitle: "Multi-Level Spatial Collision-Free Engines",
-      tag: "Algorithmic Architecture",
-      description: "Advanced scheduling platforms managing hundreds of concurrent resources across multi-level structures with zero double-booking risk.",
-      deliverables: ["Time-Slot Overlap Resolution", "Optimistic Concurrency Locking", "Interactive Spatial Floor Maps", "Automated Approval Escalations"],
-    },
-    {
-      number: "04",
-      title: "Database Indexing & Query Latency Tuning",
-      subtitle: "Database Optimization & Performance Sprints",
-      tag: "Performance Sprint",
-      description: "Deep audit of database queries, composite index design, and API bottlenecks, slashing latency by 40%+ across high-volume transaction databases.",
-      deliverables: ["Slow Query Execution Plan Audits", "Composite & Covering Index Optimization", "Redis Caching Layers", "N+1 Elimination & Query Refactoring"],
-    },
-    {
-      number: "05",
-      title: "Code Modernization & Technical Mentorship",
-      subtitle: "Legacy Tech Migration & Developer Coaching",
-      tag: "Advisory / Mentorship",
-      description: "Guidance on modern development standards, tech stack migrations (e.g. Java to MERN/Laravel), Git workflows, and clean code principles for engineering teams.",
-      deliverables: ["Legacy Stack Migration Roadmaps", "Team Code Standardization & Git Flow", "1-on-1 Code Review & Mentorship", "Automated Testing & CI/CD Setup"],
-    },
-  ] as ServicePack[],
 };

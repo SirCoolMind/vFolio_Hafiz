@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { PortfolioView } from "./components/portfolio/PortfolioView";
-import { AboutView } from "./components/portfolio/AboutView";
-import { WorkView } from "./components/portfolio/WorkView";
-import { ServicesView } from "./components/portfolio/ServicesView";
-import { ContactView } from "./components/portfolio/ContactView";
+
+// Secondary pages are split into their own chunks; the home page doesn't pay for them.
+const AboutView = lazy(() => import("./components/portfolio/AboutView").then((m) => ({ default: m.AboutView })));
+const WorkView = lazy(() => import("./components/portfolio/WorkView").then((m) => ({ default: m.WorkView })));
+const ContactView = lazy(() => import("./components/portfolio/ContactView").then((m) => ({ default: m.ContactView })));
 import "../css/app.css";
 
 const App: React.FC = () => {
@@ -15,9 +16,6 @@ const App: React.FC = () => {
   }
   if (path === "/work") {
     return <WorkView />;
-  }
-  if (path === "/services") {
-    return <ServicesView />;
   }
   if (path === "/contact") {
     return <ContactView />;
@@ -30,7 +28,9 @@ const rootElement = document.getElementById("root");
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
-      <App />
+      <Suspense fallback={null}>
+        <App />
+      </Suspense>
     </React.StrictMode>
   );
 }

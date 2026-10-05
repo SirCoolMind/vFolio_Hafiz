@@ -2,31 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ------------------------------------------------------------------
+   Theme tokens (space-separated RGB so Tailwind can apply /alpha).
+   Dark is graphite, not pure black; light is warm paper.
+   ------------------------------------------------------------------ */
+:root,
+[data-theme="dark"] {
+  --paper: 15 16 19;      /* page */
+  --panel: 24 25 30;      /* framed section surface */
+  --ink: 242 240 235;     /* text + strokes */
+  --rail-fill: 242 240 235;
+  --skills-bg: 7 9 19;
+  --stage: 9 13 21;
+  --stage-pill: 16 20 30;
+  --stage-pill-hover: 20 24 36;
+  --stage-pill-active: 22 27 40;
+  --glow: 255 255 255;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --paper: 232 229 222;
+  --panel: 250 249 246;
+  --ink: 20 21 24;
+  --rail-fill: 20 21 24;
+  --skills-bg: 241 239 233;
+  --stage: 250 249 246;
+  --stage-pill: 244 242 237;
+  --stage-pill-hover: 255 255 255;
+  --stage-pill-active: 255 255 255;
+  --glow: 20 21 24;
+  color-scheme: light;
+}
+
 :root {
   --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: 'Noto Serif Display', 'Playfair Display', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
+  --rail-width: 212px;
 }
 
 /* Custom Smooth Scrolling & Typography */
 html {
   scroll-behavior: smooth;
-  background-color: #000000;
-  color: #ffffff;
+  scroll-padding-top: 88px;
+  background-color: rgb(var(--paper));
+  color: rgb(var(--ink));
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: #000000;
-  color: #ffffff;
+  background-color: rgb(var(--paper));
+  color: rgb(var(--ink));
   overflow-x: hidden;
-  selection-background-color: #ffffff;
-  selection-color: #000000;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 ::selection {
-  background: #ffffff;
-  color: #000000;
+  background: rgb(var(--ink));
+  color: rgb(var(--paper));
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--ink));
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Framed section plate: visible edge, lifted surface, no wasted air */
+.section-panel {
+  position: relative;
+  background-color: rgb(var(--panel));
+  border: 1px solid rgb(var(--ink) / 0.16);
+  border-radius: 28px;
+  box-shadow: 0 1px 0 rgb(var(--ink) / 0.04) inset, 0 18px 40px -28px rgb(0 0 0 / 0.35);
+  overflow: hidden;
+}
+
+[data-theme="light"] .section-panel {
+  border-color: rgb(var(--ink) / 0.14);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.8) inset, 0 18px 40px -30px rgb(40 32 20 / 0.28);
+}
+
+@media (max-width: 639px) {
+  .section-panel { border-radius: 22px; }
 }
 
 /* Luxury Editorial typography classes */
@@ -45,36 +104,37 @@ body {
 .divider-line {
   height: 1px;
   width: 100%;
-  background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.05) 100%);
+  background: linear-gradient(90deg, rgb(var(--ink) / 0.05) 0%, rgb(var(--ink) / 0.2) 50%, rgb(var(--ink) / 0.05) 100%);
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: rgb(var(--paper));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #262626;
-  border-radius: 3px;
+  background: rgb(var(--ink) / 0.22);
+  border-radius: 4px;
+  border: 2px solid rgb(var(--paper));
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #404040;
+  background: rgb(var(--ink) / 0.4);
 }
 
 /* Text outline utility */
 .text-stroke-1 {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
+  -webkit-text-stroke: 1px rgb(var(--ink) / 0.25);
   color: transparent;
 }
 
 .text-stroke-1:hover {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
-  color: rgba(255, 255, 255, 0.1);
+  -webkit-text-stroke: 1px rgb(var(--ink) / 0.9);
+  color: rgb(var(--ink) / 0.1);
 }
 
 /* Seamless infinite marquee ticker */
@@ -83,10 +143,17 @@ body {
   100% { transform: translateX(-50%); }
 }
 
+/* Content must be repeated an even number of times: scrolling by exactly
+   half lands on an identical frame, so the loop never visibly restarts. */
 .animate-marquee {
   display: flex;
-  width: 200%;
-  animation: marquee 25s linear infinite;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none; }
 }
 
 .animate-marquee:hover {
@@ -105,7 +172,7 @@ body {
 
 .glow-beam-rect {
   stroke-dasharray: 60px 300px;
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.85));
+  filter: drop-shadow(0 0 3px rgb(var(--glow) / 0.6));
 }
 
 .group\/pill:hover .glow-beam-rect {
@@ -168,4 +235,99 @@ body {
   .group\/pill:hover .core-icon-container {
     animation: none !important;
   }
+}
+
+/* Light theme: deepen accent text so it holds contrast on paper.
+   Sections pinned to data-theme="dark" (the Skills stage) keep their neon. */
+[data-theme="light"] .text-emerald-400:not([data-theme="dark"] *),
+[data-theme="light"] .hover\:text-emerald-400:hover:not([data-theme="dark"] *),
+[data-theme="light"] .hover\:text-emerald-300:hover:not([data-theme="dark"] *) {
+  color: #047857;
+}
+
+[data-theme="light"] .text-red-300:not([data-theme="dark"] *),
+[data-theme="light"] .text-red-400:not([data-theme="dark"] *) { color: #b91c1c; }
+[data-theme="light"] .text-emerald-300:not([data-theme="dark"] *) { color: #047857; }
+[data-theme="light"] .text-amber-300:not([data-theme="dark"] *),
+[data-theme="light"] .text-amber-400:not([data-theme="dark"] *) { color: #b45309; }
+[data-theme="light"] .text-yellow-300:not([data-theme="dark"] *) { color: #a16207; }
+[data-theme="light"] .text-blue-300:not([data-theme="dark"] *) { color: #1d4ed8; }
+[data-theme="light"] .text-cyan-300:not([data-theme="dark"] *),
+[data-theme="light"] .text-cyan-400:not([data-theme="dark"] *) { color: #0e7490; }
+[data-theme="light"] .text-teal-300:not([data-theme="dark"] *) { color: #0f766e; }
+[data-theme="light"] .text-sky-300:not([data-theme="dark"] *),
+[data-theme="light"] .text-sky-400:not([data-theme="dark"] *) { color: #0369a1; }
+[data-theme="light"] .text-lime-400:not([data-theme="dark"] *) { color: #4d7c0f; }
+[data-theme="light"] .text-orange-300:not([data-theme="dark"] *),
+[data-theme="light"] .text-orange-400:not([data-theme="dark"] *) { color: #c2410c; }
+[data-theme="light"] .text-purple-300:not([data-theme="dark"] *),
+[data-theme="light"] .text-purple-400:not([data-theme="dark"] *) { color: #7e22ce; }
+[data-theme="light"] .text-rose-300:not([data-theme="dark"] *),
+[data-theme="light"] .text-rose-400:not([data-theme="dark"] *) { color: #be123c; }
+
+/* Skills heading accent: same emerald-to-cyan idea, deep enough to read on paper */
+[data-theme="light"] .skills-accent {
+  background-image: linear-gradient(90deg, #047857, #0f766e, #0e7490);
+}
+
+/* ------------------------------------------------------------------
+   Chapter rail (desktop) + progress pill (mobile)
+   ------------------------------------------------------------------ */
+@media (min-width: 1280px) {
+  .has-rail { padding-left: var(--rail-width); }
+}
+
+.rail-track {
+  background: rgb(var(--ink) / 0.14);
+}
+
+.rail-fill {
+  background: rgb(var(--rail-fill));
+  transform-origin: top;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rail-anim { transition: none !important; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ------------------------------------------------------------------
+   Theme switch: the new theme grows out of the toggle as a circle
+   (clip-path animated from ThemeToggle). Old snapshot stays put.
+   ------------------------------------------------------------------ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+/* Fallback for browsers without View Transitions: a soft colour fade */
+.theme-fading,
+.theme-fading *,
+.theme-fading *::before,
+.theme-fading *::after {
+  transition: background-color 450ms ease, border-color 450ms ease, color 450ms ease, fill 450ms ease !important;
+}
+
+@keyframes theme-burst {
+  from { transform: scale(1); opacity: 0.9; }
+  to { transform: scale(2.2); opacity: 0; }
+}
+
+/* ------------------------------------------------------------------
+   Custom cursor: on desktop with a mouse, the ring + dot replace the
+   system arrow. Over text fields it becomes an italic serif "I".
+   ------------------------------------------------------------------ */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
 }

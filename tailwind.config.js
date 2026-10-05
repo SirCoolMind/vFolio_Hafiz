@@ -11,8 +11,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#000000",
-        foreground: "#ffffff",
+        // Theme-aware: "white" is the ink, "black" is the paper. Every existing
+        // text-white/xx and bg-black utility follows the active data-theme.
+        white: "rgb(var(--ink) / <alpha-value>)",
+        black: "rgb(var(--paper) / <alpha-value>)",
+        panel: "rgb(var(--panel) / <alpha-value>)",
+        // Skills showroom surfaces
+        stage: "rgb(var(--stage) / <alpha-value>)",
+        "stage-pill": "rgb(var(--stage-pill) / <alpha-value>)",
+        "stage-pill-hover": "rgb(var(--stage-pill-hover) / <alpha-value>)",
+        "stage-pill-active": "rgb(var(--stage-pill-active) / <alpha-value>)",
+        background: "rgb(var(--paper) / <alpha-value>)",
+        foreground: "rgb(var(--ink) / <alpha-value>)",
+        // Literal colours for the few places that must not flip with the theme.
+        snow: "#ffffff",
+        coal: "#000000",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "Plus Jakarta Sans", "Inter", "sans-serif"],
@@ -21,7 +34,7 @@ module.exports = {
       },
       backgroundImage: {
         "grid-pattern-dark":
-          "radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px)",
+          "radial-gradient(rgb(var(--ink) / 0.12) 1px, transparent 1px)",
       },
       backgroundSize: {
         "grid-pattern-dark": "32px 32px",

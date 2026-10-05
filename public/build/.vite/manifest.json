@@ -1,16 +1,55 @@
 {
+  "node_modules/sweetalert2/dist/sweetalert2.esm.all.js": {
+    "file": "assets/sweetalert2.esm.all-C-gltHdU.js",
+    "name": "sweetalert2.esm.all",
+    "src": "node_modules/sweetalert2/dist/sweetalert2.esm.all.js",
+    "isDynamicEntry": true
+  },
   "resources/css/app.css": {
-    "file": "assets/app-B8eicS5B.css",
+    "file": "assets/app-DlHpdGgk.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.tsx": {
-    "file": "assets/app-BOOwMgZO.js",
+    "file": "assets/app-CV6jtG2n.js",
     "name": "app",
     "src": "resources/js/app.tsx",
     "isEntry": true,
+    "dynamicImports": [
+      "node_modules/sweetalert2/dist/sweetalert2.esm.all.js",
+      "resources/js/components/portfolio/AboutView.tsx",
+      "resources/js/components/portfolio/WorkView.tsx",
+      "resources/js/components/portfolio/ContactView.tsx"
+    ],
     "css": [
-      "assets/app-B8eicS5B.css"
+      "assets/app-DlHpdGgk.css"
+    ]
+  },
+  "resources/js/components/portfolio/AboutView.tsx": {
+    "file": "assets/AboutView-D3-fN6_q.js",
+    "name": "AboutView",
+    "src": "resources/js/components/portfolio/AboutView.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/components/portfolio/ContactView.tsx": {
+    "file": "assets/ContactView-BAy8MIIG.js",
+    "name": "ContactView",
+    "src": "resources/js/components/portfolio/ContactView.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/components/portfolio/WorkView.tsx": {
+    "file": "assets/WorkView-DRCUZj8I.js",
+    "name": "WorkView",
+    "src": "resources/js/components/portfolio/WorkView.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx"
     ]
   }
 }

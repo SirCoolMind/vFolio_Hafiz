@@ -13,7 +13,7 @@ interface GridSkillItem {
   colSpan: string;
 }
 
-export const HolographicShowroom: React.FC = () => {
+export const HolographicShowroom: React.FC<{ header?: React.ReactNode }> = ({ header }) => {
   const [activeHighlight, setActiveHighlight] = useState<RichSkill>(RICH_SKILLS[0]);
 
   // Track 1 and Track 2 for dual-direction infinite marquee ribbons
@@ -130,10 +130,10 @@ export const HolographicShowroom: React.FC = () => {
       <div key={skill.id} className={`${colSpan} relative group/pill`}>
         <button
           onClick={() => setActiveHighlight(skill)}
-          className={`relative w-full h-11 px-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2.5 text-xs text-white/90 cursor-pointer overflow-hidden ${
+          className={`relative w-full h-11 px-2 sm:px-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 sm:gap-2.5 text-xs text-white/90 cursor-pointer overflow-hidden ${
             isSelected
-              ? "bg-[#161B28] border border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.16),inset_0_1px_1px_rgba(255,255,255,0.3)]"
-              : "bg-[#10141E] hover:bg-[#141824] border border-white/[0.08] hover:border-white/35 hover:shadow-[0_0_20px_rgba(255,255,255,0.16),inset_0_1px_1px_rgba(255,255,255,0.3)]"
+              ? "bg-stage-pill-active border border-white/40 shadow-[0_0_20px_rgb(var(--glow)/0.16),inset_0_1px_1px_rgb(var(--glow)/0.3)]"
+              : "bg-stage-pill hover:bg-stage-pill-hover border border-white/[0.1] hover:border-white/35 hover:shadow-[0_0_20px_rgb(var(--glow)/0.16),inset_0_1px_1px_rgb(var(--glow)/0.3)]"
           }`}
         >
           {/* Surface Shiny Specular Sheen (Sweeps diagonally on hover) */}
@@ -154,7 +154,7 @@ export const HolographicShowroom: React.FC = () => {
               height="100%"
               rx="12"
               fill="none"
-              stroke="rgba(255, 255, 255, 0.9)"
+              stroke="rgb(var(--ink) / 0.9)"
               strokeWidth="1.5"
               strokeDasharray="60 300"
               className="glow-beam-rect group-hover/pill:animate-glow-beam"
@@ -174,7 +174,7 @@ export const HolographicShowroom: React.FC = () => {
 
         {/* Floating Pop-up Tooltip: Hover only, Zero effect on pill width or layout, percentage removed */}
         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none z-50 opacity-0 group-hover/pill:opacity-100 transition-all duration-200 translate-y-1 group-hover/pill:translate-y-0 flex flex-col items-center">
-          <div className="px-3.5 py-2 rounded-xl bg-neutral-950 border border-white/20 shadow-[0_12px_28px_rgba(0,0,0,0.9)] backdrop-blur-xl whitespace-nowrap text-left">
+          <div className="px-3.5 py-2 rounded-xl bg-stage border border-white/20 shadow-[0_12px_28px_rgb(0_0_0/0.35)] backdrop-blur-xl whitespace-nowrap text-left">
             <div className="flex items-center gap-2">
               <span className="font-bold text-xs text-white">
                 {skill.fullName}
@@ -183,32 +183,36 @@ export const HolographicShowroom: React.FC = () => {
                 {skill.tag}
               </span>
             </div>
-            <div className="text-[10px] font-mono text-white/50 mt-1">
+            <div className="text-[10px] font-mono text-white/65 mt-1">
               <span>{skill.experience} production tenure</span>
             </div>
           </div>
           {/* Tooltip Caret Pointer */}
-          <div className="w-2 h-2 -mt-1 rotate-45 bg-neutral-950 border-r border-b border-white/20" />
+          <div className="w-2 h-2 -mt-1 rotate-45 bg-stage border-r border-b border-white/20" />
         </div>
       </div>
     );
   };
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-8">
+      {/* Title + moving tech ribbons: side by side on desktop, stacked when narrow */}
+      <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+      {header && <div className="shrink-0">{header}</div>}
       {/* Dual Infinite Marquee Ribbons ("Iconic Moving Box") */}
-      <div className="relative py-4 overflow-hidden rounded-2xl bg-[#090D15] border border-white/10 backdrop-blur-xl">
+      <div className="relative flex-1 min-w-0 py-4 overflow-hidden rounded-2xl bg-stage border border-white/10">
         {/* Left & Right gradient fade masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#090D15] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#090D15] to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-stage to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-stage to-transparent z-10 pointer-events-none" />
 
         {/* Track 1: Moving Left */}
-        <div className="flex gap-4 animate-marquee mb-4">
-          {[...track1, ...track1].map((skill, index) => (
+        {/* Four copies, scrolled by half: the loop point is invisible and takes twice as long to come around */}
+        <div className="animate-marquee mb-4" style={{ animationDuration: "110s" }}>
+          {[...track1, ...track1, ...track1, ...track1].map((skill, index) => (
             <div
               key={`${skill.id}-t1-${index}`}
               onClick={() => setActiveHighlight(skill)}
-              className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/25 transition-all flex-shrink-0 cursor-pointer group shadow-sm"
+              className="mr-4 flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/25 transition-all flex-shrink-0 cursor-pointer group shadow-sm"
             >
               <TechIcon skill={skill} size="sm" />
               <span className="text-xs font-semibold text-white/90 group-hover:text-white whitespace-nowrap">
@@ -223,14 +227,14 @@ export const HolographicShowroom: React.FC = () => {
 
         {/* Track 2: Moving in Reverse */}
         <div
-          className="flex gap-4 animate-marquee"
-          style={{ animationDirection: "reverse", animationDuration: "30s" }}
+          className="animate-marquee"
+          style={{ animationDirection: "reverse", animationDuration: "125s" }}
         >
-          {[...track2, ...track2].map((skill, index) => (
+          {[...track2, ...track2, ...track2, ...track2].map((skill, index) => (
             <div
               key={`${skill.id}-t2-${index}`}
               onClick={() => setActiveHighlight(skill)}
-              className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/25 transition-all flex-shrink-0 cursor-pointer group shadow-sm"
+              className="mr-4 flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/25 transition-all flex-shrink-0 cursor-pointer group shadow-sm"
             >
               <TechIcon skill={skill} size="sm" />
               <span className="text-xs font-semibold text-white/90 group-hover:text-white whitespace-nowrap">
@@ -243,13 +247,14 @@ export const HolographicShowroom: React.FC = () => {
           ))}
         </div>
       </div>
+      </div>
 
       {/* Holographic Category Cards (Sleek Dark Obsidian Cards with 2px Top Accent Line - No Light Leaking!) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 min-[1440px]:grid-cols-2 gap-6">
         {categories.map((cat) => (
           <div
             key={cat.title}
-            className={`relative p-6 sm:p-8 rounded-3xl bg-[#090D15]/95 border border-white/[0.08] border-t-2 ${cat.topBorder} hover:border-white/20 transition-all duration-300 shadow-2xl flex flex-col justify-between`}
+            className={`relative p-6 sm:p-8 rounded-3xl bg-stage border border-white/[0.1] border-t-2 ${cat.topBorder} hover:border-white/20 transition-all duration-300 shadow-2xl flex flex-col justify-between`}
           >
             <div>
               {/* Header */}

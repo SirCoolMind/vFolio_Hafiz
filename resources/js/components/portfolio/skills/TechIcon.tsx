@@ -143,11 +143,11 @@ export const TechIcon: React.FC<TechIconProps> = ({ skill, className = "", size 
       case "latex":
         return (
           <svg viewBox="0 0 46 22" width={iconSizes * 1.45} height={iconSizes * 0.72} fill="none">
-            <text x="3" y="16" fontFamily="Georgia, 'Times New Roman', serif" fontWeight="900" fontSize="13" fill="#F8FAFC">L</text>
-            <text x="11" y="12" fontFamily="Georgia, 'Times New Roman', serif" fontWeight="900" fontSize="10" fill="#F8FAFC">A</text>
-            <text x="19" y="16" fontFamily="Georgia, 'Times New Roman', serif" fontWeight="900" fontSize="13" fill="#F8FAFC">T</text>
-            <text x="27" y="18" fontFamily="Georgia, 'Times New Roman', serif" fontWeight="900" fontSize="11" fill="#F8FAFC">E</text>
-            <text x="35" y="16" fontFamily="Georgia, 'Times New Roman', serif" fontWeight="900" fontSize="13" fill="#F8FAFC">X</text>
+            <text x="3" y="16" fontFamily="Georgia, 'Times New Roman', serif" fontWeight="900" fontSize="13" fill="currentColor">L</text>
+            <text x="11" y="12" fontFamily="Georgia, 'Times New Roman', serif" fontWeight="900" fontSize="10" fill="currentColor">A</text>
+            <text x="19" y="16" fontFamily="Georgia, 'Times New Roman', serif" fontWeight="900" fontSize="13" fill="currentColor">T</text>
+            <text x="27" y="18" fontFamily="Georgia, 'Times New Roman', serif" fontWeight="900" fontSize="11" fill="currentColor">E</text>
+            <text x="35" y="16" fontFamily="Georgia, 'Times New Roman', serif" fontWeight="900" fontSize="13" fill="currentColor">X</text>
           </svg>
         );
 
@@ -262,7 +262,7 @@ export const TechIcon: React.FC<TechIconProps> = ({ skill, className = "", size 
             />
             <circle cx="10" cy="8" r="1" fill="#F59E0B" />
             <circle cx="14" cy="8" r="1" fill="#F59E0B" />
-            <ellipse cx="12" cy="13" rx="2" ry="3" fill="#FFFFFF" fillOpacity="0.2" />
+            <ellipse cx="12" cy="13" rx="2" ry="3" fill="currentColor" fillOpacity="0.2" />
             <path d="M8 19c-2 0-3 1-3 2h14c0-1-1-2-3-2H8z" fill="#F59E0B" stroke="#F59E0B" strokeWidth="1.2" />
           </svg>
         );
@@ -360,10 +360,9 @@ export const TechIcon: React.FC<TechIconProps> = ({ skill, className = "", size 
 
   return (
     <div
-      className={`relative inline-flex items-center justify-center flex-shrink-0 transition-transform duration-200 bg-[#0B0F17] border border-white/10 ${sizeClasses} ${className}`}
+      className={`relative inline-flex items-center justify-center flex-shrink-0 transition-transform duration-200 bg-stage border border-white/10 text-white ${sizeClasses} ${className}`}
       style={{
-        backgroundColor: "#0B0F17",
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.4)",
+        boxShadow: "0 2px 4px rgb(0 0 0 / 0.18)",
       }}
     >
       {skill.logoUrl && !imgError ? (

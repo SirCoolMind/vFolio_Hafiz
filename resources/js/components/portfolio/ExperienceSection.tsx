@@ -1,18 +1,19 @@
 import React from "react";
 import { PORTFOLIO_DATA } from "@/data/portfolio-data";
+import { ZoomablePhoto } from "./Lightbox";
 
 export const ExperienceSection: React.FC = () => {
   return (
     <section
       id="experience"
-      className="relative pt-6 pb-12 md:pt-8 md:pb-16 bg-black text-white px-6 md:px-12 border-t border-white/10"
+      className="section-panel text-white px-6 md:px-12 py-10 md:py-14"
     >
       <div className="max-w-7xl mx-auto">
         {/* Editorial-style Numbered Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
             <div className="flex items-baseline gap-2 mb-3">
-              <span className="text-xs font-mono font-bold tracking-widest text-white/50">
+              <span className="text-xs font-mono font-bold tracking-widest text-white/65">
                 (02)
               </span>
               <span className="font-serif italic text-lg text-white/60">
@@ -25,7 +26,7 @@ export const ExperienceSection: React.FC = () => {
           </div>
 
           <p className="text-sm md:text-base text-white/60 font-sans max-w-md leading-relaxed">
-            Over 4+ years of professional fullstack engineering track record delivering scalable backends, high-throughput engines, and multi-tenant platforms.
+            5+ years building Laravel, Vue.js and Node.js systems for government and enterprise clients, from national-scale data processing to award-winning platforms.
           </p>
         </div>
 
@@ -35,7 +36,7 @@ export const ExperienceSection: React.FC = () => {
             const isEven = index % 2 === 0;
             return (
               <div
-                key={exp.company}
+                key={`${exp.company}-${exp.period}`}
                 className="p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/10 bg-white/[0.02] hover:border-white/30 transition-all duration-300 group"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -60,11 +61,11 @@ export const ExperienceSection: React.FC = () => {
                           </p>
                         </div>
 
-                        <div className="flex flex-col sm:items-end gap-1">
-                          <span className="text-xs font-mono font-semibold text-white bg-white/5 px-3 py-1 rounded-full border border-white/10 inline-block">
+                        <div className="flex flex-col sm:items-end gap-1 shrink-0">
+                          <span className="text-xs font-mono font-semibold text-white bg-white/5 px-3 py-1 rounded-full border border-white/10 inline-block w-fit whitespace-nowrap">
                             {exp.period}
                           </span>
-                          <span className="text-[11px] font-mono text-white/40">
+                          <span className="text-[11px] font-mono text-white/60 whitespace-nowrap">
                             {exp.location}
                           </span>
                         </div>
@@ -72,7 +73,7 @@ export const ExperienceSection: React.FC = () => {
 
                       {/* Achievements and Responsibilities */}
                       <div className="space-y-2">
-                        <span className="text-[10px] uppercase font-mono tracking-widest text-white/40 block mb-2">
+                        <span className="text-[10px] uppercase font-mono tracking-widest text-white/60 block mb-2">
                           Key Achievements &amp; Impact
                         </span>
                         <ul className="space-y-2">
@@ -88,7 +89,7 @@ export const ExperienceSection: React.FC = () => {
 
                     {/* Technologies Applied */}
                     <div className="mt-6 pt-4 border-t border-white/5 flex flex-wrap items-center gap-1.5">
-                      <span className="text-[10px] font-mono text-white/40 mr-1.5">
+                      <span className="text-[10px] font-mono text-white/60 mr-1.5">
                         Stack:
                       </span>
                       {exp.tech.map((t) => (
@@ -105,17 +106,24 @@ export const ExperienceSection: React.FC = () => {
                   {/* Photo Column */}
                   {exp.image && (
                     <div className={`lg:col-span-5 ${!isEven ? "lg:order-1" : "lg:order-2"}`}>
-                      <div className="relative w-full h-56 sm:h-64 lg:h-72 rounded-2xl overflow-hidden border border-white/15 bg-neutral-900 shadow-xl group/img">
+                      <ZoomablePhoto
+                        src={exp.image}
+                        alt={`${exp.company} team photo`}
+                        caption={`${exp.imageCaption || `${exp.company} Team`} · ${exp.company}`}
+                        className="relative w-full h-56 sm:h-64 lg:h-72 rounded-2xl overflow-hidden border border-white/15 bg-neutral-900 shadow-xl group/img"
+                      >
                         <img
+                          loading="lazy"
                           src={exp.image}
                           alt={`${exp.company} Team Photo`}
+                          decoding="async"
                           className="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-700"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
-                        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-white/90 backdrop-blur-md bg-black/60 px-3 py-1.5 rounded-lg border border-white/10">
+                        <div className="absolute inset-0 bg-gradient-to-t from-coal/70 via-transparent to-transparent opacity-80" />
+                        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-snow/90 backdrop-blur-md bg-coal/60 px-3 py-1.5 rounded-lg border border-snow/15">
                           <span>{exp.imageCaption || `${exp.company} Team`}</span>
                         </div>
-                      </div>
+                      </ZoomablePhoto>
                     </div>
                   )}
                 </div>
