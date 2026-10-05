@@ -27,6 +27,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection = "home" }) => {
     { label: "Contact", href: "/#contact" },
   ];
 
+  const downloads = [
+    { label: "Resume", href: PORTFOLIO_DATA.personal.resumeUrl },
+    { label: "CV", href: PORTFOLIO_DATA.personal.cvUrl },
+  ];
+
   return (
     <>
       <header
@@ -73,20 +78,24 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection = "home" }) => {
             ))}
           </nav>
 
-          {/* Action CTAs: Resume & Mobile Hamburger */}
+          {/* Action CTAs: Resume, CV & Mobile Hamburger */}
           <div className="flex items-center gap-4">
-            <a
-              href={PORTFOLIO_DATA.personal.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/30 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 text-xs font-mono font-medium tracking-wider uppercase"
-              data-cursor-text="PDF"
-            >
-              <span>Resume</span>
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-            </a>
+            <div className="hidden sm:flex items-center gap-2">
+              {downloads.map((file) => (
+                <a
+                  key={file.label}
+                  href={file.href}
+                  download
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/30 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 text-xs font-mono font-medium tracking-wider uppercase"
+                  data-cursor-text="PDF"
+                >
+                  <span>{file.label}</span>
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                </a>
+              ))}
+            </div>
 
             {/* Mobile Hamburger Toggle */}
             <button
@@ -117,15 +126,21 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection = "home" }) => {
                 <span className="text-xs font-mono text-white/40">↳</span>
               </a>
             ))}
-            <a
-              href={PORTFOLIO_DATA.personal.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="mt-4 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white text-black font-semibold text-sm uppercase tracking-wider"
-            >
-              <span>Download Resume PDF</span>
-            </a>
+            <div className="mt-4 grid grid-cols-2 gap-3">
+              {downloads.map((file, i) => (
+                <a
+                  key={file.label}
+                  href={file.href}
+                  download
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full font-semibold text-sm uppercase tracking-wider ${
+                    i === 0 ? "bg-white text-black" : "border border-white/30 text-white"
+                  }`}
+                >
+                  <span>{file.label} PDF</span>
+                </a>
+              ))}
+            </div>
           </nav>
         </div>
       )}

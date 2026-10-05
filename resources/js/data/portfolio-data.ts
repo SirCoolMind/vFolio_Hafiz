@@ -74,7 +74,8 @@ export const PORTFOLIO_DATA = {
     alternateEmail: "hafizcoolman@gmail.com",
     github: "https://github.com/SirCoolMind",
     linkedin: "https://www.linkedin.com/in/hafizruslan98/",
-    resumeUrl: "/assets/file/Resume Muhammad Hafiz Ruslan.pdf",
+    resumeUrl: "/assets/file/Resume Muhammad Hafiz Ruslan 2026.pdf",
+    cvUrl: "/assets/file/CV Muhammad Hafiz Ruslan 2026.pdf",
     avatar: "/assets/img/person.jpg",
     status: "Open for Fullstack Engineering & High-Impact Contracts",
     combatSpamAnswer: "19", // 17 + 2
