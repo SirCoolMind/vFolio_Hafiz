@@ -22,27 +22,3 @@ Route::get('/contact', [HomeController::class, 'index'])->name('contact');
 
 Route::post('sendEmail', [HomeController::class, 'sendEmail'])->name('sendEmail');
 
-// Preserved Design Archive Routes
-Route::get('/design-1', function () {
-    return view('vfolio.design-1');
-})->name('design-1');
-
-Route::get('/design-2', function () {
-    return view('vfolio.design-2');
-})->name('design-2');
-
-Route::get('/design-3', function () {
-    return view('vfolio.design-3');
-})->name('design-3');
-
-Route::get('/design-4', function () {
-    return view('vfolio.design-4');
-})->name('design-4');
-
-Route::get('/design-5', function () {
-    return view('vfolio.design-5');
-})->name('design-5');
-
-Route::get('/design-6', function () {
-    return view('vfolio.design-6');
-})->name('design-6');
