@@ -69,7 +69,11 @@ class HomeController extends Controller
                 return response()->json(['title' => 'Berjaya', 'status' => 'success', 'message' => "Berjaya", 'detail' => "berjaya"]);
             }
 
-            \Mail::to($this->ownerEmail)->send(new ContactFormEmail($data));
+            try {
+                \Mail::to($this->ownerEmail)->send(new ContactFormEmail($data));
+            } catch (\Throwable $mailEx) {
+                \Log::warning("Mail delivery skipped/failed: " . $mailEx->getMessage());
+            }
 
             // DB::commit();
         } catch (\Throwable $th) {
