@@ -155,8 +155,8 @@ export const ContactSection: React.FC = () => {
             <div className="pt-8 mt-8 border-t border-white/10 flex flex-wrap gap-4 text-xs font-mono tracking-wider uppercase text-white/50">
               <a href={PORTFOLIO_DATA.personal.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn ↗</a>
               <a href={PORTFOLIO_DATA.personal.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub ↗</a>
-              <a href={PORTFOLIO_DATA.personal.resumeUrl} download className="hover:text-white transition-colors">Resume PDF ↓</a>
-              <a href={PORTFOLIO_DATA.personal.cvUrl} download className="hover:text-white transition-colors">CV PDF ↓</a>
+              <a href={PORTFOLIO_DATA.personal.resumeUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Resume PDF ↗</a>
+              <a href={PORTFOLIO_DATA.personal.cvUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">CV PDF ↗</a>
             </div>
           </div>
 

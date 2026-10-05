@@ -87,6 +87,36 @@ export const HeroSection: React.FC = () => {
                 </svg>
               </a>
             </div>
+
+            {/* Document Previews: Resume & CV (open in new tab) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 max-w-2xl">
+              {[
+                { label: "Resume", desc: "Quick summary · PDF", href: PORTFOLIO_DATA.personal.resumeUrl },
+                { label: "CV", desc: "Full details · PDF", href: PORTFOLIO_DATA.personal.cvUrl },
+              ].map((file) => (
+                <a
+                  key={file.label}
+                  href={file.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 px-5 py-5 rounded-2xl border border-white/20 bg-white/[0.04] hover:bg-white hover:text-black hover:border-white transition-all duration-300"
+                  data-cursor-text="PDF"
+                >
+                  <span className="w-12 h-12 shrink-0 rounded-xl border border-white/20 group-hover:border-black/20 flex items-center justify-center transition-colors">
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </span>
+                  <span className="flex flex-col flex-1 min-w-0">
+                    <span className="text-lg font-semibold tracking-tight">View {file.label}</span>
+                    <span className="text-xs font-mono text-white/50 group-hover:text-black/60 transition-colors">{file.desc}</span>
+                  </span>
+                  <svg className="w-5 h-5 shrink-0 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7m0 0H8m9 0v9" />
+                  </svg>
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Right Column: Top-Right Full 3:4 Portrait Photo in True Color */}

@@ -66,8 +66,8 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-xs font-mono uppercase tracking-wider text-white/70">
               <li><a href="#services" className="hover:text-white transition-colors">Services (05)</a></li>
               <li><a href="#contact" className="hover:text-white transition-colors">Contact (06)</a></li>
-              <li><a href={PORTFOLIO_DATA.personal.resumeUrl} download className="hover:text-white transition-colors">Resume PDF ↓</a></li>
-              <li><a href={PORTFOLIO_DATA.personal.cvUrl} download className="hover:text-white transition-colors">CV PDF ↓</a></li>
+              <li><a href={PORTFOLIO_DATA.personal.resumeUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Resume PDF ↗</a></li>
+              <li><a href={PORTFOLIO_DATA.personal.cvUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">CV PDF ↗</a></li>
             </ul>
           </div>
 
