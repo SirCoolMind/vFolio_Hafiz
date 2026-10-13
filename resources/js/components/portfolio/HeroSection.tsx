@@ -2,6 +2,11 @@ import React, { useRef, useState } from "react";
 import { PORTFOLIO_DATA } from "@/data/portfolio-data";
 import { ZoomablePhoto } from "./Lightbox";
 
+// Must match the <link rel="preload"> in vfolio/index.blade.php, or the portrait downloads twice.
+// The lightbox still opens the full 1200px original.
+const HERO_PORTRAIT_SRCSET = "/assets/img/person-600.webp 600w, /assets/img/person-900.webp 900w, /assets/img/person.webp 1200w";
+const HERO_PORTRAIT_SIZES = "(min-width: 768px) 390px, (min-width: 640px) 360px, 320px";
+
 /** "firefighter" with a hover/focus explanation that is nudged to stay inside the viewport. */
 const FirefighterTip: React.FC = () => {
   const tipRef = useRef<HTMLSpanElement>(null);
@@ -99,6 +104,8 @@ export const HeroSection: React.FC = () => {
             >
               <img
                 src={PORTFOLIO_DATA.personal.avatar}
+                srcSet={HERO_PORTRAIT_SRCSET}
+                sizes={HERO_PORTRAIT_SIZES}
                 alt="Muhammad Hafiz Ruslan"
                 width={1200}
                 height={1600}

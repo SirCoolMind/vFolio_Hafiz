@@ -48,13 +48,14 @@ html {
   scroll-padding-top: 88px;
   background-color: rgb(var(--paper));
   color: rgb(var(--ink));
+  overflow-x: clip;
 }
 
 body {
   font-family: var(--font-sans);
   background-color: rgb(var(--paper));
   color: rgb(var(--ink));
-  overflow-x: hidden;
+  overflow-x: clip;
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
@@ -77,6 +78,13 @@ body {
   border-radius: 28px;
   box-shadow: 0 1px 0 rgb(var(--ink) / 0.04) inset, 0 18px 40px -28px rgb(0 0 0 / 0.35);
   overflow: hidden;
+}
+
+/* Off-screen panels skip rendering; --panel-h is each panel's measured height
+   (set by PortfolioView), so the page keeps its exact size. */
+.skip-offscreen-panels .section-panel {
+  content-visibility: auto;
+  contain-intrinsic-size: auto var(--panel-h, 1000px);
 }
 
 [data-theme="light"] .section-panel {
@@ -308,6 +316,22 @@ body {
 
 ::view-transition-new(root) {
   z-index: 2;
+}
+
+/* Mobile: the root snapshot can differ from the viewport (dynamic URL bar,
+   stray horizontal overflow). By default the browser scales it to fit and
+   animates the size change, so the page visibly shrinks then snaps back.
+   Pin the snapshots at their natural size and skip the group's resize. */
+::view-transition-group(root) {
+  animation: none;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  width: 100%;
+  height: 100%;
+  object-fit: none;
+  object-position: top left;
 }
 
 /* Fallback for browsers without View Transitions: a soft colour fade */

@@ -369,6 +369,8 @@ export const TechIcon: React.FC<TechIconProps> = ({ skill, className = "", size 
         <img
           src={skill.logoUrl}
           alt={skill.name}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-contain filter drop-shadow-sm"
           onError={() => setImgError(true)}
         />
