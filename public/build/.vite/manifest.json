@@ -6,12 +6,12 @@
     "isDynamicEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app-D64t33eh.css",
+    "file": "assets/app-QJXizc2V.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.tsx": {
-    "file": "assets/app-C_9YAsar.js",
+    "file": "assets/app-DpLPAzEl.js",
     "name": "app",
     "src": "resources/js/app.tsx",
     "isEntry": true,
@@ -22,11 +22,11 @@
       "resources/js/components/portfolio/ContactView.tsx"
     ],
     "css": [
-      "assets/app-D64t33eh.css"
+      "assets/app-QJXizc2V.css"
     ]
   },
   "resources/js/components/portfolio/AboutView.tsx": {
-    "file": "assets/AboutView-BRIwCkQb.js",
+    "file": "assets/AboutView-CnHIklKY.js",
     "name": "AboutView",
     "src": "resources/js/components/portfolio/AboutView.tsx",
     "isDynamicEntry": true,
@@ -35,7 +35,7 @@
     ]
   },
   "resources/js/components/portfolio/ContactView.tsx": {
-    "file": "assets/ContactView-Ip58-OM4.js",
+    "file": "assets/ContactView-BCJmzAzS.js",
     "name": "ContactView",
     "src": "resources/js/components/portfolio/ContactView.tsx",
     "isDynamicEntry": true,
@@ -44,7 +44,7 @@
     ]
   },
   "resources/js/components/portfolio/WorkView.tsx": {
-    "file": "assets/WorkView-DcM-iJTL.js",
+    "file": "assets/WorkView-BMDkHBhC.js",
     "name": "WorkView",
     "src": "resources/js/components/portfolio/WorkView.tsx",
     "isDynamicEntry": true,

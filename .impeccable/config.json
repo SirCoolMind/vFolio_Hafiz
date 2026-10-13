@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "bounce-easing",
+        "value": "ios-jiggle",
+        "createdAt": "2026-10-11T20:14:28.928Z",
+        "reason": "agent: intentional iOS app-jiggle hover effect on skill pills, documented in app.css comment; predates this session"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "createdAt": "2026-10-11T20:14:29.245Z",
+        "reason": "agent: spring settle paired with the intentional ios-jiggle icon effect (.core-icon-container); predates this session"
+      }
+    ]
+  }
+}

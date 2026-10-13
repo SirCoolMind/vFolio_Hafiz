@@ -20,6 +20,13 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/favicon.ico') }}" type="image/x-icon">
 
+    <!-- Hero portrait (LCP): start the download now instead of after the JS bundle renders.
+         srcset/sizes must match HeroSection.tsx. -->
+    <link rel="preload" as="image" fetchpriority="high"
+          href="/assets/img/person.webp"
+          imagesrcset="/assets/img/person-600.webp 600w, /assets/img/person-900.webp 900w, /assets/img/person.webp 1200w"
+          imagesizes="(min-width: 768px) 390px, (min-width: 640px) 360px, 320px">
+
     <!-- Google Fonts Preconnect & Stylesheets -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
