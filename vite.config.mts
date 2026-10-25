@@ -1,7 +1,11 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import react from '@vitejs/plugin-react';
+import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+const rootDir = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
     plugins: [
@@ -16,10 +20,8 @@ export default defineConfig({
         {
             name: 'manifest-copy',
             closeBundle() {
-                const fs = require('fs');
-                const path = require('path');
-                const src = path.resolve(__dirname, 'public/build/.vite/manifest.json');
-                const dest = path.resolve(__dirname, 'public/build/manifest.json');
+                const src = path.resolve(rootDir, 'public/build/.vite/manifest.json');
+                const dest = path.resolve(rootDir, 'public/build/manifest.json');
                 if (fs.existsSync(src)) {
                     fs.copyFileSync(src, dest);
                 }
@@ -31,7 +33,7 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, './resources/js'),
+            '@': path.resolve(rootDir, './resources/js'),
         },
     },
 });
