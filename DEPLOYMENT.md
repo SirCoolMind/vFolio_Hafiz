@@ -14,7 +14,7 @@ Production deploys run from GitHub Actions ([.github/workflows/deploy.yml](.gith
 1. **Validate secrets** — every secret must be set; paths must match strict patterns (absolute, under `/var/www/`, no `..`, no trailing slash).
 2. **Build** — `npm ci && npm run build` on the GitHub runner. `public/build/` is **not committed**; CI builds it every deploy.
 3. **Preflight** on the server — checks every directory, file and binary the deploy touches. If any is missing, the run stops **before** maintenance mode, so the live site is untouched.
-4. **Update** — `artisan down`, `git fetch` + `git reset --hard origin/main` (untracked files such as `.env` are left alone).
+4. **Update** — `artisan down` (skipped if the site is already in maintenance, e.g. during a manual PHP-version cutover), `git fetch` + `git reset --hard origin/main` (untracked files such as `.env` are left alone).
 5. **Upload assets** — `rsync --delete` of the built `public/build/` to the server.
 6. **Finish** — `composer install --no-dev`, `artisan migrate --force`, `config:cache`, `route:cache`, `view:cache`.
 7. **Up** — `artisan up` always runs once maintenance mode was entered, even if a step failed.

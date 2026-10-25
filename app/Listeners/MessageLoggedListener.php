@@ -2,30 +2,16 @@
 
 namespace App\Listeners;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Log\Events\MessageLogged;
-use Illuminate\Queue\InteractsWithQueue;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 class MessageLoggedListener
 {
     /**
-     * Create the event listener.
-     *
-     * @return void
+     * Echo log messages to the console when running artisan commands.
+     * Auto-discovered by Laravel through the type-hinted handle() method.
      */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
-     * Handle the event.
-     *
-     * @param  \Illuminate\Log\Events\MessageLogged  $event
-     * @return void
-     */
-    public function handle(MessageLogged $event)
+    public function handle(MessageLogged $event): void
     {
         if (app()->runningInConsole()) {
             $output = new ConsoleOutput();
