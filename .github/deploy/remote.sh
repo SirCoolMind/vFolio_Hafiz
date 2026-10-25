@@ -47,7 +47,12 @@ case "$STEP" in
     ;;
   update)
     guard_all
-    "$PHP_BIN" "$APP/artisan" down --retry=15
+    # Already in maintenance (e.g. a manual PHP-version cutover): don't run the old code's artisan.
+    if test -f "$APP/storage/framework/down"; then
+      echo "Already in maintenance mode, skipping artisan down"
+    else
+      "$PHP_BIN" "$APP/artisan" down --retry=15
+    fi
     "$GIT_BIN" -C "$APP" fetch --prune origin main
     "$GIT_BIN" -C "$APP" reset --hard origin/main
     guard_all
