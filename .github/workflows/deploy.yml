@@ -1,0 +1,111 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'next-portfolio/**'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    if: github.repository == 'SirCoolMind/vFolio_Hafiz'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+      DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+      DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+      DEPLOY_PHP_BIN: ${{ secrets.DEPLOY_PHP_BIN }}
+      DEPLOY_COMPOSER_BIN: ${{ secrets.DEPLOY_COMPOSER_BIN }}
+      DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+      DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+
+    steps:
+      - name: Validate secrets
+        run: |
+          set -euo pipefail
+          fail() { echo "GUARD FAILED: $*" >&2; exit 1; }
+          for v in DEPLOY_HOST DEPLOY_USER DEPLOY_PATH DEPLOY_PHP_BIN DEPLOY_COMPOSER_BIN DEPLOY_SSH_KEY DEPLOY_KNOWN_HOSTS; do
+            test -n "${!v:-}" || fail "secret $v is empty or not set"
+          done
+          [[ "$DEPLOY_PATH" =~ ^/var/www/[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*$ ]] || fail "DEPLOY_PATH must be absolute, under /var/www/, without trailing slash"
+          [[ "$DEPLOY_PATH" != *..* ]] || fail "DEPLOY_PATH must not contain '..'"
+          [[ "$DEPLOY_PHP_BIN" =~ ^/usr/(local/)?bin/[A-Za-z0-9._-]+$ ]] || fail "DEPLOY_PHP_BIN must be an absolute path in /usr/bin or /usr/local/bin"
+          [[ "$DEPLOY_COMPOSER_BIN" =~ ^/usr/(local/)?bin/[A-Za-z0-9._-]+$ ]] || fail "DEPLOY_COMPOSER_BIN must be an absolute path in /usr/bin or /usr/local/bin"
+          [[ "$DEPLOY_USER" =~ ^[a-z_][a-z0-9_-]*$ ]] || fail "DEPLOY_USER is not a valid username"
+          [[ "$DEPLOY_HOST" =~ ^[A-Za-z0-9.-]+$ ]] || fail "DEPLOY_HOST is not a valid host"
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Build frontend assets
+        run: |
+          set -euo pipefail
+          npm ci
+          npm run build
+          test -f "${GITHUB_WORKSPACE}/public/build/manifest.json" || { echo "GUARD FAILED: build produced no manifest.json" >&2; exit 1; }
+
+      - name: Configure SSH
+        run: |
+          set -euo pipefail
+          test -n "${RUNNER_TEMP:-}" && test -d "${RUNNER_TEMP}" || { echo "GUARD FAILED: RUNNER_TEMP missing" >&2; exit 1; }
+          install -m 600 /dev/null "${RUNNER_TEMP}/deploy_key"
+          printf '%s\n' "$DEPLOY_SSH_KEY" > "${RUNNER_TEMP}/deploy_key"
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "${RUNNER_TEMP}/deploy_known_hosts"
+          cat > "${RUNNER_TEMP}/deploy_ssh_config" <<EOF
+          Host deploy-target
+            HostName ${DEPLOY_HOST}
+            User ${DEPLOY_USER}
+            IdentityFile ${RUNNER_TEMP}/deploy_key
+            IdentitiesOnly yes
+            UserKnownHostsFile ${RUNNER_TEMP}/deploy_known_hosts
+            StrictHostKeyChecking yes
+            BatchMode yes
+            ConnectTimeout 20
+          EOF
+
+      - name: Preflight checks on server
+        run: |
+          set -euo pipefail
+          ssh -F "${RUNNER_TEMP}/deploy_ssh_config" deploy-target "bash -s -- preflight ${DEPLOY_PATH} ${DEPLOY_PHP_BIN} ${DEPLOY_COMPOSER_BIN}" < "${GITHUB_WORKSPACE}/.github/deploy/remote.sh"
+
+      - name: Maintenance mode + update code
+        id: update
+        run: |
+          set -euo pipefail
+          ssh -F "${RUNNER_TEMP}/deploy_ssh_config" deploy-target "bash -s -- update ${DEPLOY_PATH} ${DEPLOY_PHP_BIN} ${DEPLOY_COMPOSER_BIN}" < "${GITHUB_WORKSPACE}/.github/deploy/remote.sh"
+
+      - name: Upload built assets
+        run: |
+          set -euo pipefail
+          test -f "${GITHUB_WORKSPACE}/public/build/manifest.json" || { echo "GUARD FAILED: local build missing" >&2; exit 1; }
+          rsync -az --delete -e "ssh -F ${RUNNER_TEMP}/deploy_ssh_config" "${GITHUB_WORKSPACE}/public/build/" "deploy-target:${DEPLOY_PATH}/public/build/"
+
+      - name: Install dependencies, migrate, cache
+        run: |
+          set -euo pipefail
+          ssh -F "${RUNNER_TEMP}/deploy_ssh_config" deploy-target "bash -s -- finish ${DEPLOY_PATH} ${DEPLOY_PHP_BIN} ${DEPLOY_COMPOSER_BIN}" < "${GITHUB_WORKSPACE}/.github/deploy/remote.sh"
+
+      - name: Bring site back up
+        if: always() && steps.update.conclusion != 'skipped'
+        run: |
+          set -euo pipefail
+          ssh -F "${RUNNER_TEMP}/deploy_ssh_config" deploy-target "bash -s -- up ${DEPLOY_PATH} ${DEPLOY_PHP_BIN} ${DEPLOY_COMPOSER_BIN}" < "${GITHUB_WORKSPACE}/.github/deploy/remote.sh"
+
+      - name: Remove SSH key
+        if: always()
+        run: |
+          test -n "${RUNNER_TEMP:-}" || exit 0
+          rm -f -- "${RUNNER_TEMP}/deploy_key" "${RUNNER_TEMP}/deploy_known_hosts" "${RUNNER_TEMP}/deploy_ssh_config"

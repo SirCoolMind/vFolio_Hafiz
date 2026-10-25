@@ -17,3 +17,4 @@ yarn-error.log
 /next-portfolio/node_modules
 /next-portfolio/screenshots
 /next-portfolio/.next
+/public/build
