@@ -45,8 +45,14 @@ return [
             'port' => env('MAIL_PORT', 2525),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
-            'timeout' => null,
+            'timeout' => env('MAIL_TIMEOUT', 10),
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+        ],
+
+        // Brevo HTTPS API (port 443): the droplet's outbound SMTP ports are blocked.
+        'brevo' => [
+            'transport' => 'brevo',
+            'timeout' => env('MAIL_TIMEOUT', 10),
         ],
 
         'ses' => [
