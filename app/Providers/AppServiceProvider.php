@@ -2,11 +2,10 @@
 
 namespace App\Providers;
 
+use App\Mail\Transport\GmailTransport;
+use App\Services\GmailClient;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\ServiceProvider;
-use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Component\Mailer\Bridge\Brevo\Transport\BrevoTransportFactory;
-use Symfony\Component\Mailer\Transport\Dsn;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,9 +22,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Mail::extend('brevo', function (array $config) {
-            return (new BrevoTransportFactory(null, HttpClient::create(['timeout' => (float) ($config['timeout'] ?? 10)])))
-                ->create(new Dsn('brevo+api', 'default', (string) config('services.brevo.key')));
+        Mail::extend('gmail', function (array $config) {
+            return new GmailTransport(new GmailClient(
+                (string) config('services.gmail.client_id'),
+                (string) config('services.gmail.client_secret'),
+                (string) config('services.gmail.refresh_token'),
+                (int) ($config['timeout'] ?? 10),
+            ));
         });
     }
 }

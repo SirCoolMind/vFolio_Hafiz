@@ -57,6 +57,42 @@ test -f <app-path>/artisan
 
 The deploy user needs **no sudo**.
 
+## Contact email (Gmail API)
+
+The droplet blocks outbound SMTP, so mail goes over HTTPS through the Gmail API (`MAIL_MAILER=gmail`). Mail is sent as the authorized Google account, so `MAIL_FROM_ADDRESS` must be that Gmail address; Gmail rewrites any other From address.
+
+**Google setup:** in Google Cloud, create a project, enable the Gmail API, and create an OAuth client of type **Desktop app**. Set the audience to External and **publish the app to In production**: in Testing, refresh tokens expire after 7 days. Google warns that the app is unverified when you approve it, which is expected for your own account.
+
+**Get the refresh token** on the server. Open the URL it prints in your own browser, then paste back the address you land on:
+
+```bash
+<php-bin> <app-path>/artisan gmail:authorize
+```
+
+**Server `.env`** (never commit these, and run `artisan config:cache` after changing them):
+
+```
+MAIL_MAILER=gmail
+MAIL_FROM_ADDRESS=<gmail-address>
+GMAIL_CLIENT_ID=
+GMAIL_CLIENT_SECRET=
+GMAIL_REFRESH_TOKEN=
+```
+
+**Check it works:**
+
+```bash
+<php-bin> <app-path>/artisan gmail:test
+```
+
+**Keep the token alive.** Google revokes a refresh token after six months without use, and a quiet contact form can go that long. A monthly cron job for the deploy user sends you a test email, so a month with no email means mail is broken:
+
+```bash
+0 9 1 * * <php-bin> <app-path>/artisan gmail:test >> /dev/null 2>&1
+```
+
+**When sending stops:** changing the Google account password also revokes the token (`invalid_grant` in the logs). Run `gmail:authorize` again and replace `GMAIL_REFRESH_TOKEN`. Visitors still see success and their message stays in the `contact_form` table, so nothing is lost while it's down.
+
 ## Re-run / roll back
 
 - **Re-run:** Actions → Deploy → pick the run → **Re-run all jobs**, or **Run workflow** on `main`.
