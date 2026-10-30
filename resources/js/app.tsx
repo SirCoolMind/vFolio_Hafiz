@@ -6,6 +6,8 @@ import { PortfolioView } from "./components/portfolio/PortfolioView";
 const AboutView = lazy(() => import("./components/portfolio/AboutView").then((m) => ({ default: m.AboutView })));
 const WorkView = lazy(() => import("./components/portfolio/WorkView").then((m) => ({ default: m.WorkView })));
 const ContactView = lazy(() => import("./components/portfolio/ContactView").then((m) => ({ default: m.ContactView })));
+const PrivacyView = lazy(() => import("./components/portfolio/LegalView").then((m) => ({ default: m.PrivacyView })));
+const TermsView = lazy(() => import("./components/portfolio/LegalView").then((m) => ({ default: m.TermsView })));
 import "../css/app.css";
 
 const App: React.FC = () => {
@@ -19,6 +21,12 @@ const App: React.FC = () => {
   }
   if (path === "/contact") {
     return <ContactView />;
+  }
+  if (path === "/privacy") {
+    return <PrivacyView />;
+  }
+  if (path === "/terms") {
+    return <TermsView />;
   }
 
   return <PortfolioView />;

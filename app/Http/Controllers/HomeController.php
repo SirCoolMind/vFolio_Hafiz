@@ -36,6 +36,14 @@ class HomeController extends Controller
             'title' => 'Contact Muhammad Hafiz Ruslan | Hire a Full-Stack Developer',
             'description' => 'Hiring for a full-stack or Laravel role, or have a project in mind? Get in touch with Muhammad Hafiz Ruslan, software engineer in Kuala Lumpur, Malaysia.',
         ],
+        'privacy' => [
+            'title' => 'Privacy Policy | Muhammad Hafiz Ruslan',
+            'description' => 'How vfolio.hafizr.com handles contact form messages, visit logs, cookies and Microsoft Clarity data.',
+        ],
+        'terms' => [
+            'title' => 'Terms of Service | Muhammad Hafiz Ruslan',
+            'description' => 'The terms for using vfolio.hafizr.com, including its content, contact form and external links.',
+        ],
     ];
 
     /**

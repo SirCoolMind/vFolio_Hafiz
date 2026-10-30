@@ -125,6 +125,8 @@
                 <a href="{{ route('about') }}">About</a>
                 <a href="{{ route('work') }}">Work</a>
                 <a href="{{ route('contact') }}">Contact</a>
+                <a href="{{ route('privacy') }}">Privacy Policy</a>
+                <a href="{{ route('terms') }}">Terms of Service</a>
                 <a href="/assets/file/Resume%20Muhammad%20Hafiz%20Ruslan%202026.pdf">Resume (PDF)</a>
                 <a href="https://github.com/SirCoolMind">GitHub</a>
                 <a href="https://www.linkedin.com/in/hafizruslan98/">LinkedIn</a>

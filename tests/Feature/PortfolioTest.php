@@ -20,7 +20,7 @@ class PortfolioTest extends TestCase
 
     public static function pages(): array
     {
-        return [['/'], ['/about'], ['/work'], ['/contact']];
+        return [['/'], ['/about'], ['/work'], ['/contact'], ['/privacy'], ['/terms']];
     }
 
     #[DataProvider('pages')]
@@ -44,6 +44,16 @@ class PortfolioTest extends TestCase
             ->assertSee('<link rel="canonical" href="'.url('/').'">', false);
     }
 
+    public function test_legal_pages_have_their_own_titles_and_are_linked_without_javascript(): void
+    {
+        $this->get('/privacy')->assertSee('<title>Privacy Policy | Muhammad Hafiz Ruslan</title>', false);
+        $this->get('/terms')->assertSee('<title>Terms of Service | Muhammad Hafiz Ruslan</title>', false);
+
+        $this->get('/')
+            ->assertSee('<a href="'.url('/privacy').'">Privacy Policy</a>', false)
+            ->assertSee('<a href="'.url('/terms').'">Terms of Service</a>', false);
+    }
+
     public function test_link_preview_uses_the_social_card(): void
     {
         $this->assertFileExists(public_path('assets/img/og-image.jpg'));
@@ -59,7 +69,7 @@ class PortfolioTest extends TestCase
             ->assertOk()
             ->assertHeader('Content-Type', 'application/xml');
 
-        foreach (['/', '/about', '/work', '/contact'] as $uri) {
+        foreach (['/', '/about', '/work', '/contact', '/privacy', '/terms'] as $uri) {
             $response->assertSee('<loc>'.url($uri).'</loc>', false);
         }
 
@@ -75,7 +85,7 @@ class PortfolioTest extends TestCase
             ->assertJson(['status' => 'success']);
 
         $this->assertDatabaseHas('contact_form', ['contact_email' => 'visitor@example.com', 'contact_is_bot' => false]);
-        Mail::assertSent(ContactFormEmail::class, fn ($mail) => $mail->hasTo('hafizcoolman@gmail.com'));
+        Mail::assertSent(ContactFormEmail::class, fn ($mail) => $mail->hasTo('hafizcoolman@gmail.com') && $mail->hasReplyTo('visitor@example.com', 'Visitor'));
     }
 
     public function test_contact_form_with_wrong_answer_is_flagged_as_bot_and_not_mailed(): void

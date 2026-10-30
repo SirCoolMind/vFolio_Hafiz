@@ -11,6 +11,14 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col items-center sm:items-start gap-1 text-center sm:text-left">
           <span>© {new Date().getFullYear()} Muhammad Hafiz Ruslan. All rights reserved.</span>
           <span className="text-white/45">This site uses Microsoft Clarity to understand visitor behavior.</span>
+          <nav aria-label="Legal" className="flex gap-4">
+            <a href="/privacy" className="hover:text-white underline underline-offset-4 transition-colors">
+              Privacy Policy
+            </a>
+            <a href="/terms" className="hover:text-white underline underline-offset-4 transition-colors">
+              Terms of Service
+            </a>
+          </nav>
         </div>
         <button
           onClick={scrollToTop}
