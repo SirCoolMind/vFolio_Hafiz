@@ -19,14 +19,16 @@
     <meta property="og:url" content="{{ $canonical }}">
     <meta property="og:title" content="{{ $page['title'] }}">
     <meta property="og:description" content="{{ $page['description'] }}">
-    <meta property="og:image" content="{{ asset('assets/img/person.jpg') }}">
-    <meta property="og:image:alt" content="Portrait of Muhammad Hafiz Ruslan">
+    <meta property="og:image" content="{{ asset('assets/img/og-image.jpg') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Muhammad Hafiz Ruslan, AI-assisted full-stack developer and software engineer">
     <meta property="profile:first_name" content="Muhammad Hafiz">
     <meta property="profile:last_name" content="Ruslan">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $page['title'] }}">
     <meta name="twitter:description" content="{{ $page['description'] }}">
-    <meta name="twitter:image" content="{{ asset('assets/img/person.jpg') }}">
+    <meta name="twitter:image" content="{{ asset('assets/img/og-image.jpg') }}">
 
     <!-- Structured data: lets Google tie this site, GitHub and LinkedIn to one person -->
     <script type="application/ld+json">

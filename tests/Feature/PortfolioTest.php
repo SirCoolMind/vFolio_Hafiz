@@ -44,6 +44,15 @@ class PortfolioTest extends TestCase
             ->assertSee('<link rel="canonical" href="'.url('/').'">', false);
     }
 
+    public function test_link_preview_uses_the_social_card(): void
+    {
+        $this->assertFileExists(public_path('assets/img/og-image.jpg'));
+
+        $this->get('/')
+            ->assertSee('<meta property="og:image" content="'.asset('assets/img/og-image.jpg').'">', false)
+            ->assertSee('<meta name="twitter:image" content="'.asset('assets/img/og-image.jpg').'">', false);
+    }
+
     public function test_sitemap_lists_every_page(): void
     {
         $response = $this->get('/sitemap.xml')
