@@ -33,6 +33,30 @@ class PortfolioTest extends TestCase
         $this->assertDatabaseCount(config('visitor.table_name'), 1);
     }
 
+    public function test_each_page_has_its_own_title_and_canonical(): void
+    {
+        $this->get('/about')
+            ->assertSee('<title>About Muhammad Hafiz Ruslan | Experience, Education &amp; Skills</title>', false)
+            ->assertSee('<link rel="canonical" href="'.url('/about').'">', false)
+            ->assertSee('"@type":"Person"', false);
+
+        $this->get('/')
+            ->assertSee('<link rel="canonical" href="'.url('/').'">', false);
+    }
+
+    public function test_sitemap_lists_every_page(): void
+    {
+        $response = $this->get('/sitemap.xml')
+            ->assertOk()
+            ->assertHeader('Content-Type', 'application/xml');
+
+        foreach (['/', '/about', '/work', '/contact'] as $uri) {
+            $response->assertSee('<loc>'.url($uri).'</loc>', false);
+        }
+
+        $this->assertDatabaseCount(config('visitor.table_name'), 0);
+    }
+
     public function test_contact_form_with_correct_answer_stores_and_mails(): void
     {
         Mail::fake();

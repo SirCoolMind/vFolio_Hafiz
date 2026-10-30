@@ -6,16 +6,68 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Muhammad Hafiz Ruslan | AI-Assisted Full-Stack Developer & Software Engineer</title>
-    <meta name="description" content="Muhammad Hafiz Ruslan, AI-assisted full-stack developer and software engineer in Malaysia. Laravel, Vue.js and Node.js systems for government and enterprise clients.">
-    <meta name="keywords" content="Muhammad Hafiz Ruslan, Hafiz Ruslan, AI-Assisted Full-Stack Developer, Laravel Developer, PHP 8.3, LaTeX Engine, Vue.js, React, Next.js, Tailwind CSS, Malaysia">
+    <title>{{ $page['title'] }}</title>
+    <meta name="description" content="{{ $page['description'] }}">
     <meta name="author" content="Muhammad Hafiz Ruslan">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="{{ $canonical }}">
 
-    <!-- OpenGraph -->
-    <meta property="og:title" content="Muhammad Hafiz Ruslan | AI-Assisted Full-Stack Developer & Software Engineer">
-    <meta property="og:description" content="AI-assisted full-stack developer and software engineer. Laravel, Vue.js and Node.js systems for government and enterprise clients.">
+    <!-- OpenGraph / Twitter: what LinkedIn, WhatsApp, Slack etc. show for a shared link -->
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Muhammad Hafiz Ruslan">
+    <meta property="og:locale" content="en_MY">
+    <meta property="og:url" content="{{ $canonical }}">
+    <meta property="og:title" content="{{ $page['title'] }}">
+    <meta property="og:description" content="{{ $page['description'] }}">
     <meta property="og:image" content="{{ asset('assets/img/person.jpg') }}">
-    <meta property="og:type" content="website">
+    <meta property="og:image:alt" content="Portrait of Muhammad Hafiz Ruslan">
+    <meta property="profile:first_name" content="Muhammad Hafiz">
+    <meta property="profile:last_name" content="Ruslan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $page['title'] }}">
+    <meta name="twitter:description" content="{{ $page['description'] }}">
+    <meta name="twitter:image" content="{{ asset('assets/img/person.jpg') }}">
+
+    <!-- Structured data: lets Google tie this site, GitHub and LinkedIn to one person -->
+    <script type="application/ld+json">
+    {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@graph' => [
+            [
+                '@type' => 'WebSite',
+                '@id' => route('home').'#website',
+                'url' => route('home'),
+                'name' => 'Muhammad Hafiz Ruslan',
+                'inLanguage' => 'en',
+                'publisher' => ['@id' => route('home').'#person'],
+            ],
+            [
+                '@type' => 'ProfilePage',
+                '@id' => $canonical.'#webpage',
+                'url' => $canonical,
+                'name' => $page['title'],
+                'description' => $page['description'],
+                'isPartOf' => ['@id' => route('home').'#website'],
+                'mainEntity' => ['@id' => route('home').'#person'],
+            ],
+            [
+                '@type' => 'Person',
+                '@id' => route('home').'#person',
+                'name' => 'Muhammad Hafiz Ruslan',
+                'alternateName' => 'Hafiz Ruslan',
+                'url' => route('home'),
+                'image' => asset('assets/img/person.jpg'),
+                'jobTitle' => 'AI-Assisted Full-Stack Developer & Software Engineer',
+                'description' => 'AI-assisted full-stack developer and software engineer based in Malaysia, building Laravel, Vue.js and Node.js systems for government and enterprise clients.',
+                'worksFor' => ['@type' => 'Organization', 'name' => 'Unijaya Resources Sdn Bhd'],
+                'alumniOf' => ['@type' => 'CollegeOrUniversity', 'name' => 'Universiti Teknologi MARA (UiTM)'],
+                'address' => ['@type' => 'PostalAddress', 'addressLocality' => 'Kuala Lumpur', 'addressCountry' => 'MY'],
+                'knowsAbout' => ['Laravel', 'PHP', 'Vue.js', 'React', 'Node.js', 'PostgreSQL', 'ClickHouse', 'LaTeX', 'GitLab CI/CD', 'DevSecOps'],
+                'sameAs' => ['https://github.com/SirCoolMind', 'https://www.linkedin.com/in/hafizruslan98/'],
+            ],
+        ],
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}
+    </script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/favicon.ico') }}" type="image/x-icon">
@@ -60,8 +112,23 @@
     @endproduction
 </head>
 <body class="bg-black text-white antialiased">
-    <!-- React Root Mount Container -->
-    <div id="root"></div>
+    <!-- React Root Mount Container. The markup inside is replaced when React mounts;
+         it gives crawlers that don't run JavaScript real text and links to follow. -->
+    <div id="root">
+        <div class="sr-only">
+            <h1>Muhammad Hafiz Ruslan, AI-Assisted Full-Stack Developer &amp; Software Engineer</h1>
+            <p>{{ $page['description'] }}</p>
+            <nav aria-label="Pages">
+                <a href="{{ route('home') }}">Home</a>
+                <a href="{{ route('about') }}">About</a>
+                <a href="{{ route('work') }}">Work</a>
+                <a href="{{ route('contact') }}">Contact</a>
+                <a href="/assets/file/Resume%20Muhammad%20Hafiz%20Ruslan%202026.pdf">Resume (PDF)</a>
+                <a href="https://github.com/SirCoolMind">GitHub</a>
+                <a href="https://www.linkedin.com/in/hafizruslan98/">LinkedIn</a>
+            </nav>
+        </div>
+    </div>
 
     <noscript>
         <div class="p-8 text-center text-white bg-black">

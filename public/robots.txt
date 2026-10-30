@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://vfolio.hafizr.com/sitemap.xml

@@ -10,7 +10,7 @@ export const ContactView: React.FC = () => {
       <CustomCursor />
       <Navbar activeSection="contact" />
       <main className="pt-28 md:pt-32 px-2 sm:px-4 space-y-3 sm:space-y-4 max-w-[1500px] mx-auto">
-        <ContactSection />
+        <ContactSection headingAs="h1" />
       </main>
       <Footer />
     </div>

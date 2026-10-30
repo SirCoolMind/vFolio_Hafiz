@@ -25,7 +25,8 @@ const fieldClass =
 
 const labelClass = "block text-sm font-medium text-white/80 mb-1.5";
 
-export const ContactSection: React.FC = () => {
+// Standalone pages render this as their only section, so the title becomes the page <h1>.
+export const ContactSection: React.FC<{ headingAs?: "h1" | "h2" }> = ({ headingAs: Heading = "h2" }) => {
   const [formData, setFormData] = useState(EMPTY_FORM);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -117,10 +118,10 @@ export const ContactSection: React.FC = () => {
                 thank you for visiting me
               </span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-light tracking-tight text-white mb-5">
+            <Heading className="text-4xl sm:text-5xl font-light tracking-tight text-white mb-5">
               Let&apos;s make <br />
               <span className="font-bold">magic happen!</span>
-            </h2>
+            </Heading>
 
             <p className="text-base sm:text-lg text-white/70 leading-relaxed mb-8">
               Hiring for a role, or have a project in mind? Send a message and I&apos;ll get back to you.

@@ -106,7 +106,8 @@ const ScreenshotCarousel: React.FC<{ project: ProjectShowcase }> = ({ project })
   );
 };
 
-export const ProjectsSection: React.FC = () => {
+// Standalone pages render this as their only section, so the title becomes the page <h1>.
+export const ProjectsSection: React.FC<{ headingAs?: "h1" | "h2" }> = ({ headingAs: Heading = "h2" }) => {
   return (
     <section id="work" className="section-panel text-white px-5 md:px-12 py-8 md:py-14">
       <div className="max-w-7xl mx-auto">
@@ -117,9 +118,9 @@ export const ProjectsSection: React.FC = () => {
               <span className="text-xs font-mono font-bold tracking-widest text-white/65">(04)</span>
               <span className="font-serif italic text-lg text-white/60">side quests</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-white">
+            <Heading className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-white">
               Things I&apos;ve <span className="font-bold">built</span>
-            </h2>
+            </Heading>
           </div>
 
           <p className="text-sm md:text-base text-white/60 font-sans max-w-md leading-relaxed">

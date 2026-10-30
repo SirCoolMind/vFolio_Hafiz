@@ -6,6 +6,7 @@ use App\Mail\ContactFormEmail;
 use App\Models\ContactForm;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
@@ -15,13 +16,51 @@ class HomeController extends Controller
     private string $ownerEmail = 'hafizcoolman@gmail.com';
 
     /**
+     * Per-route <title> and meta description. The React app renders the page body,
+     * so this is what search engines and link previews see before any JS runs.
+     */
+    private const PAGES = [
+        'home' => [
+            'title' => 'Muhammad Hafiz Ruslan | AI-Assisted Full-Stack Developer',
+            'description' => 'Muhammad Hafiz Ruslan, AI-assisted full-stack developer and software engineer in Malaysia. Laravel, Vue.js and Node.js systems for government and enterprise clients.',
+        ],
+        'about' => [
+            'title' => 'About Muhammad Hafiz Ruslan | Experience, Education & Skills',
+            'description' => 'Senior PHP and Lead Programmer with 5+ years building Laravel, Vue.js and Node.js systems in Malaysia. First Class Computer Science graduate from UiTM.',
+        ],
+        'work' => [
+            'title' => 'Projects by Muhammad Hafiz Ruslan | PureCut & NoteRecall',
+            'description' => 'Side projects by Muhammad Hafiz Ruslan: PureCut, an in-browser AI background remover, and NoteRecall, a local-first meeting transcriber for Malay and English.',
+        ],
+        'contact' => [
+            'title' => 'Contact Muhammad Hafiz Ruslan | Hire a Full-Stack Developer',
+            'description' => 'Hiring for a full-stack or Laravel role, or have a project in mind? Get in touch with Muhammad Hafiz Ruslan, software engineer in Kuala Lumpur, Malaysia.',
+        ],
+    ];
+
+    /**
      * Render the portfolio SPA shell and log the visit.
      */
     public function index(Request $request): View
     {
         visitor()->visit();
 
-        return view('vfolio.index');
+        $routeName = $request->route()->getName();
+
+        return view('vfolio.index', [
+            'page' => self::PAGES[$routeName],
+            'canonical' => route($routeName),
+        ]);
+    }
+
+    /**
+     * XML sitemap listing every public page.
+     */
+    public function sitemap(): Response
+    {
+        return response()
+            ->view('vfolio.sitemap', ['urls' => array_map(fn ($name) => route($name), array_keys(self::PAGES))])
+            ->header('Content-Type', 'application/xml');
     }
 
     /**
